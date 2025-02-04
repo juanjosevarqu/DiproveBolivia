@@ -50,6 +50,5 @@ fun AppNavGraph(
                 provisionalName = "Mas info"
             )
         }
-
     }
 }

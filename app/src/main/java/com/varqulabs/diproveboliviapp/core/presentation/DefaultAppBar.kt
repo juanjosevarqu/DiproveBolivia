@@ -1,4 +1,4 @@
-package com.varqulabs.diproveboliviapp.core.ui
+package com.varqulabs.diproveboliviapp.core.presentation
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
