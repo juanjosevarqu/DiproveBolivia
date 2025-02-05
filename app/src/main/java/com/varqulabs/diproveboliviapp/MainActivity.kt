@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 expandedFAB = !expandedFAB
                             },
-                            containerColor = Color(0xFF3ECA63),
+                            containerColor = Color(0xFF266748),
                             contentColor = Color.White,
                         )
                     }
