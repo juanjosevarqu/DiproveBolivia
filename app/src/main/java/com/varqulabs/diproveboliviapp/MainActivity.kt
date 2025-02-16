@@ -18,11 +18,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.varqulabs.diproveboliviapp.core.domain.DIPROVE_CBBA_WHATSAPP
+import com.varqulabs.diproveboliviapp.core.presentation.utils.context.launchWhatsApp
 import com.varqulabs.diproveboliviapp.navigation.AppBottomNavigation
 import com.varqulabs.diproveboliviapp.navigation.AppNavGraph
 import com.varqulabs.diproveboliviapp.ui.theme.DiproveBoliviappTheme
@@ -34,6 +37,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             DiproveBoliviappTheme {
 
+                val context = LocalContext.current
                 val navController = rememberNavController()
 
                 var expandedFAB by remember { mutableStateOf(false) }
@@ -60,7 +64,15 @@ class MainActivity : ComponentActivity() {
                                 )
                             },
                             onClick = {
-                                expandedFAB = !expandedFAB
+                                if (expandedFAB) {
+                                    expandedFAB = false
+                                    context.launchWhatsApp(
+                                        phone = DIPROVE_CBBA_WHATSAPP,
+                                        message = "Hola, Diprove CBBA, necesito ayuda con el siguiente caso: \n- "
+                                    )
+                                } else {
+                                    expandedFAB = true
+                                }
                             },
                             containerColor = Color(0xFF266748),
                             contentColor = Color.White,
@@ -69,7 +81,11 @@ class MainActivity : ComponentActivity() {
                 ) { innerPadding ->
                     AppNavGraph(
                         navController = navController,
-                        modifier = Modifier.fillMaxSize().padding(innerPadding)
+                        modifier = Modifier
+                            .padding(
+                                bottom = innerPadding.calculateBottomPadding(),
+                            )
+                            .fillMaxSize()
                     )
                 }
             }

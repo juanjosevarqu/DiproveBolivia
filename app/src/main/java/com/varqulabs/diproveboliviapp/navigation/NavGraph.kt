@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.varqulabs.diproveboliviapp.home.HomeScreen
+import com.varqulabs.diproveboliviapp.procedures.presentation.ProceduresScreen
 
 @Composable
 fun AppNavGraph(
@@ -32,8 +33,8 @@ fun AppNavGraph(
 
         composable<ProceduresRoute> {
 
-            HomeScreen(
-                provisionalName = BottomScreens.Procedures.name
+            ProceduresScreen(
+
             )
         }
 
