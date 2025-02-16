@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -30,7 +31,7 @@ fun AppBottomNavigation(navController: NavController) {
         )
     }
 
-    NavigationBar(containerColor = MaterialTheme.colorScheme.background) {
+    NavigationBar(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
 
@@ -60,7 +61,9 @@ fun AppBottomNavigation(navController: NavController) {
                         text = screen.name,
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                        color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
+                        color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
