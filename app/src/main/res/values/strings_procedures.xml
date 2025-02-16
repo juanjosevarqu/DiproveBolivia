@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="copy_procedures_and_services">Trámites y servicios</string>
+
+    <string name="copy_banco_union_number_account">Número de cuenta Banco Unión: </string>
+
+    <string name="copy_services">Servicios</string>
+    <string name="copy_tranference">Transferencia</string>
+    <string name="copy_missing_plate">Extravío de placa</string>
+    <string name="copy_color_change">Cambio de color</string>
+    <string name="copy_structure_change">Cambio de estructura</string>
+    <string name="copy_motor_replacement">Cambio de motor</string>
+    <string name="copy_authenticity_certificate">Certificado autenticidad</string>
+    <string name="copy_new_registration">Inscripción nueva</string>
+    <string name="copy_chemical_recovery">Revenido químico</string>
+
+</resources>
