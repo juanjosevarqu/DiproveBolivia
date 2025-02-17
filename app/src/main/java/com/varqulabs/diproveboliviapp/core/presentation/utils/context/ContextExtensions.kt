@@ -41,11 +41,3 @@ fun Context.launchWhatsApp(phone: String, message: String) {
     val url = "https://wa.me/$phone?text=${Uri.encode(message)}"
     launchExternalIntent(uri = url, packageName = "com.whatsapp")
 }
-
-fun Context.launchGoogleMaps(query: String) {
-    val uri = "geo:0,0?q=${Uri.encode(query)}"
-    launchExternalIntent(uri = uri, packageName = "com.google.android.apps.maps")
-}
-
-
-
