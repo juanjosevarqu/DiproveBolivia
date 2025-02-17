@@ -68,7 +68,7 @@ fun ProceduresScreen(
 
     Scaffold(
         topBar = {
-            DefaultAppBar(title = stringResource(R.string.copy_procedures_and_services)) { }
+            DefaultAppBar(title = stringResource(R.string.copy_procedures_and_services))
         }
     ) { paddingValues ->
         LazyColumn(

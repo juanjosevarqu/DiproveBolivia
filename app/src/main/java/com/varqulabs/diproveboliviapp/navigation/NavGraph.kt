@@ -16,13 +16,13 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = ProceduresRoute,
+        startDestination = HomeRoute,
         modifier = modifier,
     ) {
 
         composable<HomeRoute> {
             HomeScreen(
-                provisionalName = BottomScreens.Home.name
+
             )
         }
 
@@ -33,7 +33,6 @@ fun AppNavGraph(
         }
 
         composable<ProceduresRoute> {
-
             ProceduresScreen(
 
             )
@@ -41,16 +40,10 @@ fun AppNavGraph(
 
         composable<AboutInstitutionRoute> {
 
-            HomeScreen(
-                provisionalName = BottomScreens.AboutInstitution.name
-            )
         }
 
         composable<AboutAppRoute> {
 
-            HomeScreen(
-                provisionalName = "Mas info"
-            )
         }
     }
 }

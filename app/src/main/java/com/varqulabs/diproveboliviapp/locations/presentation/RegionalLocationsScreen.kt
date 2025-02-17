@@ -89,7 +89,7 @@ fun RegionalLocationsScreen(
 
     Scaffold(
         topBar = {
-            DefaultAppBar(title = stringResource(R.string.copy_diprove_regionals)) { }
+            DefaultAppBar(title = stringResource(R.string.copy_diprove_regionals))
         }
     ) { paddingValues ->
         LazyColumn(
