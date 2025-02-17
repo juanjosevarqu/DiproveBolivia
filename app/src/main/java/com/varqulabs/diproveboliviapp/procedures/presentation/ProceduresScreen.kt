@@ -39,6 +39,7 @@ import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER_COPY
 import com.varqulabs.diproveboliviapp.core.presentation.DefaultAppBar
+import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.CopyIconButton
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.copyToClipboard
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
@@ -62,7 +63,7 @@ fun ProceduresScreen(
 ) {
 
     var currentSelected by remember {
-        mutableStateOf(Pair(R.string.copy_services, R.drawable.tramites_y_servicios_diprove_cbba))
+        mutableStateOf(procedures.first())
     }
 
     Scaffold(
@@ -164,38 +165,4 @@ private fun BankNumberAndCopy(
             )
         }
     }
-}
-
-@Composable
-fun ChipItem(
-    text: String,
-    onClick: () -> Unit = {},
-    selected: Boolean = false,
-) {
-    FilterChip(
-        modifier = Modifier.padding(end = 4.dp),
-        onClick = onClick,
-        leadingIcon = {},
-        border = BorderStroke(1.dp, Color(0xFF004D40)),
-        shape = MaterialTheme.shapes.large,
-        label = {
-            Text(text = text)
-        },
-        selected = selected,
-        colors = SelectableChipColors(
-            containerColor = Color.Transparent,
-            labelColor = Color(0xFF133121),
-            leadingIconColor = Color(0xFF266748),
-            trailingIconColor = Color(0xFF266748),
-            disabledContainerColor = Color(0xFFE6F4E0),
-            disabledLabelColor = Color(0xFF266748),
-            disabledLeadingIconColor = Color(0xFF266748),
-            disabledTrailingIconColor = Color(0xFF266748),
-            selectedContainerColor = Color(0xFF257240),
-            disabledSelectedContainerColor = Color(0xFFE6F4E0),
-            selectedLabelColor = Color(0xFFFFFFFF),
-            selectedLeadingIconColor = Color(0xFF266748),
-            selectedTrailingIconColor = Color(0xFF266748)
-        )
-    )
 }

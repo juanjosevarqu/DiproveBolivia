@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.varqulabs.diproveboliviapp.home.HomeScreen
+import com.varqulabs.diproveboliviapp.locations.presentation.RegionalLocationsScreen
 import com.varqulabs.diproveboliviapp.procedures.presentation.ProceduresScreen
 
 @Composable
@@ -15,7 +16,7 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = HomeRoute,
+        startDestination = ProceduresRoute,
         modifier = modifier,
     ) {
 
@@ -26,8 +27,8 @@ fun AppNavGraph(
         }
 
         composable<LocationsRoute> {
-            HomeScreen(
-                provisionalName = BottomScreens.Locations.name
+            RegionalLocationsScreen(
+
             )
         }
 
