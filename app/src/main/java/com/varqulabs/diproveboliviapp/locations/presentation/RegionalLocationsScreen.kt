@@ -97,7 +97,6 @@ fun RegionalLocationsScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(
                 top = paddingValues.calculateTopPadding(),
-                bottom = paddingValues.calculateBottomPadding(),
                 start = 16.dp,
                 end = 16.dp
             )
@@ -124,7 +123,7 @@ fun RegionalLocationsScreen(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .aspectRatio(16f / 15f)
+                        .aspectRatio(1f)
                         .clip(RoundedCornerShape(12.dp))
                         .clickableSingle { context.launchExternalIntent(currentRegionalSelected.googleMapsURL) },
                     contentScale = ContentScale.FillWidth,
