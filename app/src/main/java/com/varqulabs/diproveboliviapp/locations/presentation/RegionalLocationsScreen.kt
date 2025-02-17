@@ -19,6 +19,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -89,8 +90,12 @@ fun RegionalLocationsScreen(
 
     Scaffold(
         topBar = {
-            DefaultAppBar(title = stringResource(R.string.copy_diprove_regionals))
-        }
+            DefaultAppBar(
+                title = stringResource(R.string.copy_diprove_regionals),
+
+            )
+        },
+        containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier.fillMaxSize(),

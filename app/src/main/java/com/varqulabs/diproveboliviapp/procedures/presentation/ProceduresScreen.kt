@@ -69,7 +69,8 @@ fun ProceduresScreen(
     Scaffold(
         topBar = {
             DefaultAppBar(title = stringResource(R.string.copy_procedures_and_services))
-        }
+        },
+        containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier.fillMaxSize(),

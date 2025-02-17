@@ -24,6 +24,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -82,9 +84,13 @@ fun HomeScreen(
                         contentDescription = "Logo Policia boliviana"
                     )
                 },
-                expandedHeight = 112.dp
+                expandedHeight = 124.dp,
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = Color(0xFFFEFEFE)
+                )
             )
-        }
+        },
+        containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier
