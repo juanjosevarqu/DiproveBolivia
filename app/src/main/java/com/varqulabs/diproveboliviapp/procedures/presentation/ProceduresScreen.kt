@@ -77,7 +77,7 @@ fun ProceduresScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             contentPadding = PaddingValues(
                 top = paddingValues.calculateTopPadding(),
-                bottom = paddingValues.calculateBottomPadding(),
+                bottom = paddingValues.calculateBottomPadding() + 18.dp,
                 start = 16.dp,
                 end = 16.dp
             )

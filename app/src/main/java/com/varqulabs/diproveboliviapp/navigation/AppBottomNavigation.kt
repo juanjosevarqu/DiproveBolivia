@@ -61,16 +61,17 @@ fun AppBottomNavigation(navController: NavController) {
                         text = screen.name,
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                        color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray,
+                        color = if (isSelected) Color(0xFF266748) else Color.Gray,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.primary,
-                    selectedTextColor = MaterialTheme.colorScheme.primary,
-                    unselectedIconColor = MaterialTheme.colorScheme.onBackground,
-                    unselectedTextColor = MaterialTheme.colorScheme.onBackground,
+                    selectedIconColor = Color(0xFF266346),
+                    selectedTextColor = Color(0xFF266346),
+                    unselectedIconColor = Color.DarkGray,
+                    unselectedTextColor = Color.DarkGray,
+                    indicatorColor = Color(0x27266346)
                 )
             )
         }

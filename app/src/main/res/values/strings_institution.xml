@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="copy_about_institution">Acerca de la institución</string>
+
+    <string name="copy_platform_division">División de Plataforma</string>
+    <string name="copy_investigators_division">División de Investigadores</string>
+    <string name="copy_vehicle_identification_division">División de Identificación de Vehículos</string>
+    <string name="copy_criminal_analysis_and_intelligence_division">División de Analisis Criminal e Inteligencia</string>
+    <string name="copy_records_division">División de Archivos</string>
+
+    <string name="copy_platform_division_functions">
+        Es la unidad encargada de recepcionar las denuncias de robo de vehículos y otros delitos relacionados con la seguridad vehicular.
+        \n- Una vez registrada la denuncia, esta división se encarga de canalizar la información hacia el Grupo de Investigaciones, proporcionando los datos iniciales necesarios para el inicio de las pesquisas.
+        \n- Además, coordina con otras unidades para garantizar una respuesta rápida y efectiva.
+    </string>
+
+    <string name="copy_investigator_division_functions">
+        Integrada por personal capacitado en técnicas de investigación criminal, esta unidad tiene la función de realizar operativos, recopilar pruebas, efectuar seguimientos y coordinar con otras instancias policiales y judiciales para esclarecer casos de robo, alteración o tráfico ilícito de vehículos.
+        \n- Su labor incluye entrevistas, recolección de información y análisis de patrones delictivos para lograr la recuperación de vehículos sustraídos y la aprehensión de los responsables.
+    </string>
+
+    <string name="copy_vehicle_identification_division_functions">
+        Se encarga de la verificación, control y registro de los distintos trámites relacionados con la identificación de vehículos, tales como:
+        \n•	Cambio de motor, estructura, etc.
+        \n• Cambio de color y modificación de datos del vehículo.
+        \n• Inscripción y reinscripción de vehículos.
+        \n• Verificación de antecedentes de vehículos en base a registros policiales y judiciales.
+        \nSu labor es fundamental para evitar la circulación de vehículos con documentación irregular o provenientes de ilícitos.
+    </string>
+
+    <string name="copy_records_division_functions">
+        Es la unidad donde se almacenan todos los expedientes y antecedentes de casos investigados por DIPROVE.
+        \nEn caso de ser necesario, los archivos pueden ser reabiertos para continuar o reiniciar una investigación, ya sea por la aparición de nuevas pruebas o por solicitud de autoridades competentes.
+        \nAdemás, brinda apoyo documental a las demás divisiones para consultas e informes requeridos en los procesos judiciales y administrativos.
+    </string>
+
+    <string name="copy_analysis_and_intelligence_division_functions">
+        Especializada en la recopilación y análisis de información para la identificación de patrones delictivos, modus operandi y redes criminales dedicadas al robo de vehículos.
+        \nSu trabajo incluye:
+        \n• Seguimiento y monitoreo de casos relevantes.
+        \n• Desarticulación de organizaciones criminales vinculadas al tráfico de vehículos y autopartes.
+        \n• Coordinación con unidades de inteligencia nacionales e internacionales para combatir el crimen organizado.
+        \nEsta división desempeña un papel clave en la prevención y reducción de delitos relacionados con el parque automotor.
+    </string>
+
+</resources>

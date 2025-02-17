@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.varqulabs.diproveboliviapp.home.HomeScreen
+import com.varqulabs.diproveboliviapp.institution.presentation.AboutInstitutionScreen
 import com.varqulabs.diproveboliviapp.locations.presentation.RegionalLocationsScreen
 import com.varqulabs.diproveboliviapp.procedures.presentation.ProceduresScreen
 
@@ -39,7 +40,9 @@ fun AppNavGraph(
         }
 
         composable<AboutInstitutionRoute> {
+            AboutInstitutionScreen(
 
+            )
         }
 
         composable<AboutAppRoute> {

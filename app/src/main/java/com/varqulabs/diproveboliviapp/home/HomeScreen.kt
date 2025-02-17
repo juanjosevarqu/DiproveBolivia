@@ -1,6 +1,5 @@
 package com.varqulabs.diproveboliviapp.home
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,13 +32,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveFunctionItem
 import kotlinx.coroutines.delay
 
 private val imagesCarruselDiprove = listOf(
@@ -127,7 +126,7 @@ fun HomeScreen(
 }
 
 @Composable
-fun DiproveCarruselPager(
+private fun DiproveCarruselPager(
     modifier: Modifier = Modifier
 ) {
 
@@ -183,7 +182,7 @@ fun DiproveCarruselPager(
 }
 
 @Composable
-fun DiproveMisionVisionFunction(
+private fun DiproveMisionVisionFunction(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -207,32 +206,6 @@ fun DiproveMisionVisionFunction(
             modifier = Modifier.fillMaxWidth(),
             headingText = "Funciones:",
             bodyText = R.string.copy_diprove_function
-        )
-    }
-}
-
-@Composable
-fun DiproveFunctionItem(
-    modifier: Modifier = Modifier,
-    headingText: String,
-    @StringRes bodyText: Int,
-) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-
-        Text(
-            text = headingText,
-            fontSize = 18.sp,
-            fontFamily = FontFamily.Serif,
-            maxLines = 1,
-            fontStyle = FontStyle.Italic
-        )
-
-        Text(
-            text = stringResource(bodyText),
-            fontSize = 15.sp,
         )
     }
 }
