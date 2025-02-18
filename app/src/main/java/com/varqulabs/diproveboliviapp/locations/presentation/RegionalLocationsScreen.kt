@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -38,8 +40,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.varqulabs.diproveboliviapp.R
-import com.varqulabs.diproveboliviapp.core.presentation.DefaultAppBar
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DefaultAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.launchExternalIntent
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
 
@@ -72,7 +75,7 @@ private val regionalDiproveLocations = listOf(
     ),
 )
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun RegionalLocationsScreen(
 
@@ -91,59 +94,68 @@ fun RegionalLocationsScreen(
         },
         containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
-            contentPadding = PaddingValues(
-                top = paddingValues.calculateTopPadding() + 12.dp,
-                start = 16.dp,
-                end = 16.dp,
-                bottom = 24.dp
-            )
+
+        DiprovePoliceBackgroundContainer(
+            modifierImage = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
         ) {
+            LazyColumn(
+                modifier = it,
+                verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
+                contentPadding = PaddingValues(
+                    top = paddingValues.calculateTopPadding() + 12.dp,
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 24.dp
+                )
+            ) {
 
-            if (false) {
-                item {
-                    FlowRow(
-                        overflow = FlowRowOverflow.Clip,
-                        modifier = Modifier.fillMaxWidth(1f),
-                        verticalArrangement = Arrangement.spacedBy(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    ) {
-                        regionalDiproveLocations.forEach { regional ->
-                            ChipItem(
-                                text = stringResource(regional.title),
-                                onClick = { currentRegionalSelected = regional },
-                                selected = regional == currentRegionalSelected
-                            )
+                if (currentRegionalSelected != null) {
+                    item {
+                        FlowRow(
+                            overflow = FlowRowOverflow.Clip,
+                            modifier = Modifier.fillMaxWidth(1f),
+                            verticalArrangement = Arrangement.spacedBy(0.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            regionalDiproveLocations.forEach { regional ->
+                                ChipItem(
+                                    text = stringResource(regional.title),
+                                    onClick = { currentRegionalSelected = regional },
+                                    selected = regional == currentRegionalSelected
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    item {
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            verticalArrangement = Arrangement.spacedBy(4.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            regionalDiproveLocations.forEach { regional ->
+                                ChipItem(
+                                    text = stringResource(regional.title),
+                                    onClick = { currentRegionalSelected = regional },
+                                    selected = regional == currentRegionalSelected
+                                )
+                            }
                         }
                     }
                 }
-            } else {
-                item {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.spacedBy(4.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        regionalDiproveLocations.forEach { regional ->
-                            ChipItem(
-                                text = stringResource(regional.title),
-                                onClick = { currentRegionalSelected = regional },
-                                selected = regional == currentRegionalSelected
+
+                if (currentRegionalSelected != null) {
+                    currentRegionalSelected?.let {
+                        item {
+                            PreviewLocationGoogleMaps(
+                                modifier = Modifier.fillMaxWidth(),
+                                googleMapsURL = it.googleMapsURL,
+                                previewLocationImg = it.previewLocationImg
                             )
                         }
                     }
-                }
-            }
-
-            currentRegionalSelected?.let {
-                item {
-                    PreviewLocationGoogleMaps(
-                        modifier = Modifier.fillMaxWidth(),
-                        googleMapsURL = it.googleMapsURL,
-                        previewLocationImg = it.previewLocationImg
-                    )
                 }
             }
         }
@@ -155,7 +167,6 @@ fun PreviewLocationGoogleMaps(
     modifier: Modifier = Modifier,
     googleMapsURL: String,
     @DrawableRes previewLocationImg: Int,
-
 ) {
 
     val context = LocalContext.current
@@ -232,7 +243,7 @@ private val RegionalDiproveLocationSaver = run {
         save = {
             mapOf(
                 id_title to (it?.title ?: 0),
-                id_previewLocationImg to (it?.previewLocationImg ?: 0),
+                id_previewLocationImg to (it?.previewLocationImg ?: R.drawable.diprove_central_ubicacion),
                 id_googleMapsURL to (it?.googleMapsURL ?: "")
             )
         },

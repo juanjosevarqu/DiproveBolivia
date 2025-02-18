@@ -19,12 +19,9 @@ import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -40,7 +37,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DefaultAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveFunctionItem
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import kotlinx.coroutines.delay
 
 private val imagesCarruselDiprove = listOf(
@@ -59,17 +58,9 @@ fun HomeScreen(
 ) {
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
+            DefaultAppBar(
                 modifier = Modifier,
-                title = {
-                    Text(
-                        text = "Diprove CBBA",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontFamily = FontFamily.Serif,
-                        fontWeight = FontWeight.Bold,
-                        maxLines = 1,
-                    )
-                },
+                title = "DIPROVE CBBA.",
                 navigationIcon = {
                     Image(
                         modifier = Modifier.size(92.dp),
@@ -92,40 +83,44 @@ fun HomeScreen(
         },
         containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
+        DiprovePoliceBackgroundContainer(
+            modifierImage = Modifier
                 .fillMaxSize()
-                .padding(top = 24.dp),
-            contentPadding = PaddingValues(
-                top = paddingValues.calculateTopPadding(),
-                bottom = paddingValues.calculateBottomPadding() + 12.dp,
-                start = 12.dp,
-                end = 12.dp
-            ),
-            verticalArrangement = Arrangement.spacedBy(28.dp),
+                .padding(paddingValues)
         ) {
+            LazyColumn(
+                modifier = it,
+                contentPadding = PaddingValues(
+                    top = paddingValues.calculateTopPadding() + 24.dp,
+                    bottom = paddingValues.calculateBottomPadding() + 12.dp,
+                    start = 12.dp,
+                    end = 12.dp
+                ),
+                verticalArrangement = Arrangement.spacedBy(28.dp),
+            ) {
 
-            item {
-                Text(
-                    text = "Bienvenido!",
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif,
-                    fontWeight = FontWeight.Medium,
-                    fontStyle = FontStyle.Italic,
-                    maxLines = 1,
-                )
-            }
+                item {
+                    Text(
+                        text = "Bienvenido!",
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif,
+                        fontWeight = FontWeight.Medium,
+                        fontStyle = FontStyle.Italic,
+                        maxLines = 1,
+                    )
+                }
 
-            item {
-                DiproveCarruselPager(
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+                item {
+                    DiproveCarruselPager(
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
 
-            item {
-                DiproveMisionVisionFunction(
-                    modifier = Modifier.fillMaxWidth()
-                )
+                item {
+                    DiproveMisionVisionFunction(
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
             }
         }
     }

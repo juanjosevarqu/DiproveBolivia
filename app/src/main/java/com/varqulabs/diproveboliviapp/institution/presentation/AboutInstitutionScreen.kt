@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,9 +22,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.varqulabs.diproveboliviapp.R
-import com.varqulabs.diproveboliviapp.core.presentation.DefaultAppBar
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DefaultAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveFunctionItem
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 
 private val diproveDivisions = listOf(
     DiproveDivision(
@@ -47,6 +50,7 @@ private val diproveDivisions = listOf(
     ),
 )
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutInstitutionScreen(
     modifier: Modifier = Modifier
@@ -62,42 +66,48 @@ fun AboutInstitutionScreen(
         },
         containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            contentPadding = PaddingValues(
-                top = paddingValues.calculateTopPadding() + 12.dp,
-                bottom = paddingValues.calculateBottomPadding() + 24.dp,
-                start = 16.dp,
-                end = 16.dp
-            )
+        DiprovePoliceBackgroundContainer(
+            modifierImage = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
         ) {
-            item {
-                Column(
-                    modifier = Modifier.fillMaxWidth(1f),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    diproveDivisions.forEach { division ->
-                        ChipItem(
-                            text = stringResource(division.name),
-                            onClick = {
-                                currentSelected = division
-                            },
-                            selected = division == currentSelected
-                        )
+            LazyColumn(
+                modifier = it,
+                verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                contentPadding = PaddingValues(
+                    top = paddingValues.calculateTopPadding() + 12.dp,
+                    bottom = paddingValues.calculateBottomPadding() + 24.dp,
+                    start = 16.dp,
+                    end = 16.dp
+                )
+            ) {
+                item {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(1f),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        diproveDivisions.forEach { division ->
+                            ChipItem(
+                                text = stringResource(division.name),
+                                onClick = {
+                                    currentSelected = division
+                                },
+                                selected = division == currentSelected
+                            )
+                        }
                     }
                 }
-            }
 
-            currentSelected?.let {
-                item {
-                    DiproveFunctionItem(
-                        modifier = Modifier.fillMaxWidth(),
-                        headingText = "${stringResource(it.name)}:",
-                        bodyText = it.description,
-                    )
+                currentSelected?.let {
+                    item {
+                        DiproveFunctionItem(
+                            modifier = Modifier.fillMaxWidth(),
+                            headingText = "${stringResource(it.name)}:",
+                            bodyText = it.description,
+                        )
+                    }
                 }
             }
         }

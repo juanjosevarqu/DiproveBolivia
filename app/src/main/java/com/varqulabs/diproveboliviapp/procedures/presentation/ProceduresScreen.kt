@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,9 +38,10 @@ import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER_COPY
-import com.varqulabs.diproveboliviapp.core.presentation.DefaultAppBar
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DefaultAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.CopyIconButton
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.copyToClipboard
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
 
@@ -78,7 +80,7 @@ private val procedures = listOf(
     ),
 )
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun ProceduresScreen(
 
@@ -94,52 +96,61 @@ fun ProceduresScreen(
         },
         containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            contentPadding = PaddingValues(
-                top = paddingValues.calculateTopPadding(),
-                bottom = paddingValues.calculateBottomPadding() + 18.dp,
-                start = 16.dp,
-                end = 16.dp
-            )
+
+        DiprovePoliceBackgroundContainer(
+            modifierImage = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
         ) {
-
-            item {
-                BankNumberAndCopy(
-                    modifier = Modifier.fillMaxWidth()
+            LazyColumn(
+                modifier = it,
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                contentPadding = PaddingValues(
+                    top = paddingValues.calculateTopPadding(),
+                    bottom = paddingValues.calculateBottomPadding() + 18.dp,
+                    start = 16.dp,
+                    end = 16.dp
                 )
-            }
+            ) {
 
-            item {
-                FlowRow(
-                    overflow = FlowRowOverflow.Clip,
-                    modifier = Modifier.fillMaxWidth(1f),
-                    verticalArrangement = Arrangement.spacedBy(0.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    procedures.forEach { procedure ->
-                        ChipItem(
-                            text = stringResource(procedure.name),
-                            onClick = { currentSelected = procedure },
-                            selected = procedure == currentSelected
-                        )
+                item {
+                    BankNumberAndCopy(
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+
+                item {
+                    FlowRow(
+                        overflow = FlowRowOverflow.Clip,
+                        modifier = Modifier.fillMaxWidth(1f),
+                        verticalArrangement = Arrangement.spacedBy(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        procedures.forEach { procedure ->
+                            ChipItem(
+                                text = stringResource(procedure.name),
+                                onClick = { currentSelected = procedure },
+                                selected = procedure == currentSelected
+                            )
+                        }
                     }
                 }
-            }
 
-            currentSelected?.let { procedure ->
-                item {
-                    Image(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 12.dp)
-                            .clip(RoundedCornerShape(12.dp)),
-                        contentScale = ContentScale.FillWidth,
-                        painter = painterResource(id = procedure.image),
-                        contentDescription = "Imagen del procedimiento"
-                    )
+                if (currentSelected != null) {
+                    currentSelected?.let { procedure ->
+                        item {
+                            Image(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 12.dp)
+                                    .clip(RoundedCornerShape(12.dp)),
+                                contentScale = ContentScale.FillWidth,
+                                painter = painterResource(id = procedure.image),
+                                contentDescription = "Imagen del procedimiento"
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -196,20 +207,20 @@ private data class ProcedureDiprove(
 )
 
 private const val id_name = "ID_NAME"
-private const val id_image = "ID_IMAGE"
+private const val id_procedure_img = "ID_PROCEDURE_IMG"
 
 private val ProcedureDiproveSaver = run {
     mapSaver<ProcedureDiprove?>(
         save = {
             mapOf(
                 id_name to (it?.name ?: 0),
-                id_image to (it?.image ?: 0)
+                id_procedure_img to (it?.image ?: R.drawable.tramites_y_servicios_diprove_cbba)
             )
         },
         restore = {
             ProcedureDiprove(
                 name = it[id_name] as Int,
-                image = it[id_image] as Int
+                image = it[id_procedure_img] as Int
             )
         }
     )
