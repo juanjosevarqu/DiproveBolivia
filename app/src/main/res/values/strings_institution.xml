@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="copy_about_institution">Acerca de la institución</string>
+    <string name="copy_diprove_cbba_divisions">DIVISIONES DE DIPROVE COCHABAMBA</string>
 
     <string name="copy_platform_division">División de Plataforma</string>
     <string name="copy_investigators_division">División de Investigadores</string>

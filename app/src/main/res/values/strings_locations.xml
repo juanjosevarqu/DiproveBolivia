@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="copy_diprove_regionals">Regionales de Diprove</string>
+    <string name="copy_diprove_regional_directorates">JEFATURAS REGIONALES DE DIPROVE CBBA.</string>
 
     <string name="copy_diprove_central">Diprove Central</string>
     <string name="copy_diprove_valle_bajo">Diprove Valle Bajo</string>
