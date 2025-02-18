@@ -1,6 +1,7 @@
 package com.varqulabs.diproveboliviapp.procedures.presentation
 
-import androidx.compose.foundation.BorderStroke
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,15 +15,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SelectableChipColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.mapSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,15 +44,38 @@ import com.varqulabs.diproveboliviapp.core.presentation.utils.context.copyToClip
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
 
 private val procedures = listOf(
-    Pair(R.string.copy_services, R.drawable.tramites_y_servicios_diprove_cbba),
-    Pair(R.string.copy_tranference, R.drawable.tranferencia_vehiculo),
-    Pair(R.string.copy_missing_plate, R.drawable.extravio_de_placa),
-    Pair(R.string.copy_color_change, R.drawable.cambio_color_vehiculo),
-    Pair(R.string.copy_structure_change, R.drawable.cambio_de_estructura),
-    Pair(R.string.copy_motor_replacement, R.drawable.cambio_de_motor),
-    Pair(R.string.copy_authenticity_certificate, R.drawable.certif_autenticidad_vehiculo),
-    Pair(R.string.copy_new_registration, R.drawable.inscripcion_nuevo_vehiculo),
-    Pair(R.string.copy_chemical_recovery, R.drawable.revenido_quimico),
+    ProcedureDiprove(
+        name = R.string.copy_tranference,
+        image = R.drawable.tranferencia_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_missing_plate,
+        image = R.drawable.extravio_de_placa
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_color_change,
+        image = R.drawable.cambio_color_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_structure_change,
+        image = R.drawable.cambio_de_estructura
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_motor_replacement,
+        image = R.drawable.cambio_de_motor
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_authenticity_certificate,
+        image = R.drawable.certif_autenticidad_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_new_registration,
+        image = R.drawable.inscripcion_nuevo_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_chemical_recovery,
+        image = R.drawable.revenido_quimico
+    ),
 )
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -62,13 +84,13 @@ fun ProceduresScreen(
 
 ) {
 
-    var currentSelected by remember {
-        mutableStateOf(procedures.first())
+    var currentSelected by rememberSaveable(stateSaver = ProcedureDiproveSaver) {
+        mutableStateOf<ProcedureDiprove?>(null)
     }
 
     Scaffold(
         topBar = {
-            DefaultAppBar(title = stringResource(R.string.copy_procedures_and_services))
+            DefaultAppBar(title = stringResource(R.string.copy_services_offered))
         },
         containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
@@ -95,30 +117,30 @@ fun ProceduresScreen(
                     overflow = FlowRowOverflow.Clip,
                     modifier = Modifier.fillMaxWidth(1f),
                     verticalArrangement = Arrangement.spacedBy(0.dp),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    procedures.forEach { item ->
+                    procedures.forEach { procedure ->
                         ChipItem(
-                            text = stringResource(item.first),
-                            onClick = {
-                                currentSelected = item
-                            },
-                            selected = item.first == currentSelected.first
+                            text = stringResource(procedure.name),
+                            onClick = { currentSelected = procedure },
+                            selected = procedure == currentSelected
                         )
                     }
                 }
             }
 
-            item {
-                Image(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 12.dp)
-                        .clip(RoundedCornerShape(12.dp)),
-                    contentScale = ContentScale.FillWidth,
-                    painter = painterResource(id = currentSelected.second),
-                    contentDescription = "Imagen del procedimiento"
-                )
+            currentSelected?.let { procedure ->
+                item {
+                    Image(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 12.dp)
+                            .clip(RoundedCornerShape(12.dp)),
+                        contentScale = ContentScale.FillWidth,
+                        painter = painterResource(id = procedure.image),
+                        contentDescription = "Imagen del procedimiento"
+                    )
+                }
             }
         }
     }
@@ -166,4 +188,29 @@ private fun BankNumberAndCopy(
             )
         }
     }
+}
+
+private data class ProcedureDiprove(
+    @StringRes val name: Int,
+    @DrawableRes val image: Int,
+)
+
+private const val id_name = "ID_NAME"
+private const val id_image = "ID_IMAGE"
+
+private val ProcedureDiproveSaver = run {
+    mapSaver<ProcedureDiprove?>(
+        save = {
+            mapOf(
+                id_name to (it?.name ?: 0),
+                id_image to (it?.image ?: 0)
+            )
+        },
+        restore = {
+            ProcedureDiprove(
+                name = it[id_name] as Int,
+                image = it[id_image] as Int
+            )
+        }
+    )
 }

@@ -1,7 +1,6 @@
 package com.varqulabs.diproveboliviapp.core.presentation.composables
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SelectableChipColors
@@ -14,11 +13,12 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ChipItem(
     text: String,
+    selected: Boolean,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
-    selected: Boolean = false,
 ) {
     FilterChip(
-        modifier = Modifier.padding(end = 4.dp),
+        modifier = modifier,
         onClick = onClick,
         leadingIcon = {},
         border = BorderStroke(1.dp, Color(0xFF004D40)),

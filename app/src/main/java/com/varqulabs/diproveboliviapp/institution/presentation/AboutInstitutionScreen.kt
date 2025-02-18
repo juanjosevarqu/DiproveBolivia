@@ -1,11 +1,8 @@
 package com.varqulabs.diproveboliviapp.institution.presentation
 
-import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.FlowRowOverflow
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,7 +11,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.mapSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,12 +23,6 @@ import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.presentation.DefaultAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveFunctionItem
-
-data class DiproveDivision(
-    @StringRes val name: Int,
-    @StringRes val description: Int,
-    @DrawableRes val image: Int? = null,
-)
 
 private val diproveDivisions = listOf(
     DiproveDivision(
@@ -55,39 +47,37 @@ private val diproveDivisions = listOf(
     ),
 )
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun AboutInstitutionScreen(
     modifier: Modifier = Modifier
 ) {
 
-    var currentSelected by remember {
-        mutableStateOf(diproveDivisions.first())
+    var currentSelected by rememberSaveable(stateSaver = DiproveDivisionSaver) {
+        mutableStateOf<DiproveDivision?>(null)
     }
 
     Scaffold(
         topBar = {
-            DefaultAppBar(title = stringResource(R.string.copy_about_institution))
+            DefaultAppBar(title = stringResource(R.string.copy_diprove_cbba_divisions))
         },
         containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically),
             horizontalAlignment = Alignment.CenterHorizontally,
             contentPadding = PaddingValues(
-                top = paddingValues.calculateTopPadding(),
+                top = paddingValues.calculateTopPadding() + 12.dp,
                 bottom = paddingValues.calculateBottomPadding() + 24.dp,
                 start = 16.dp,
                 end = 16.dp
             )
         ) {
             item {
-                FlowRow(
-                    overflow = FlowRowOverflow.Clip,
+                Column(
                     modifier = Modifier.fillMaxWidth(1f),
-                    verticalArrangement = Arrangement.spacedBy(0.dp),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     diproveDivisions.forEach { division ->
                         ChipItem(
@@ -101,13 +91,40 @@ fun AboutInstitutionScreen(
                 }
             }
 
-            item {
-                DiproveFunctionItem(
-                    modifier = Modifier.fillMaxWidth(),
-                    headingText = "${stringResource(currentSelected.name)}:",
-                    bodyText = currentSelected.description,
-                )
+            currentSelected?.let {
+                item {
+                    DiproveFunctionItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        headingText = "${stringResource(it.name)}:",
+                        bodyText = it.description,
+                    )
+                }
             }
         }
     }
+}
+
+private data class DiproveDivision(
+    @StringRes val name: Int,
+    @StringRes val description: Int,
+)
+
+private const val id_name = "ID_NAME"
+private const val id_description = "ID_DESCRIPTION"
+
+private val DiproveDivisionSaver = run {
+    mapSaver<DiproveDivision?>(
+        save = {
+            mapOf(
+                id_name to (it?.name ?: 0),
+                id_description to (it?.description ?: 0),
+            )
+        },
+        restore = {
+            DiproveDivision(
+                name = it[id_name] as Int,
+                description = it[id_description] as Int,
+            )
+        }
+    )
 }
