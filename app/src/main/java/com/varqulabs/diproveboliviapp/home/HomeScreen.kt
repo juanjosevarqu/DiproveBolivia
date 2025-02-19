@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveFunctionItem
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveDescriptionItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import kotlinx.coroutines.delay
 
@@ -171,19 +171,19 @@ private fun DiproveMisionVisionFunction(
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
 
-        DiproveFunctionItem(
+        DiproveDescriptionItem(
             modifier = Modifier.fillMaxWidth(),
             headingText = "Misión:",
             bodyText = R.string.copy_diprove_mission
         )
 
-        DiproveFunctionItem(
+        DiproveDescriptionItem(
             modifier = Modifier.fillMaxWidth(),
             headingText = "Visión:",
             bodyText = R.string.copy_diprove_vision
         )
 
-        DiproveFunctionItem(
+        DiproveDescriptionItem(
             modifier = Modifier.fillMaxWidth(),
             headingText = "Funciones:",
             bodyText = R.string.copy_diprove_function

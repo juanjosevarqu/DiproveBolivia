@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DiproveFunctionItem(
+fun DiproveDescriptionItem(
     modifier: Modifier = Modifier,
     headingText: String,
     @StringRes bodyText: Int,

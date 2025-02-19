@@ -13,7 +13,13 @@ data object LocationsRoute
 data object ProceduresRoute
 
 @Serializable
-data object AboutInstitutionRoute
+data object DivisionsRoute
+
+@Serializable
+data object DivisionsHomeScreen
+
+@Serializable
+data class DiproveDivisionScreen(val divisionId: Int)
 
 @Serializable
 data object AboutAppRoute
@@ -31,7 +37,7 @@ sealed class BottomScreens<T>(val name: String, val icon: Int, val route: T) {
     data object Procedures : BottomScreens<ProceduresRoute>(name = "Tramites", icon = R.drawable.baseline_notes_24, route = ProceduresRoute)
 
     @Serializable
-    data object AboutInstitution : BottomScreens<AboutInstitutionRoute>(name = "Institución", icon = R.drawable.baseline_business_24, route = AboutInstitutionRoute)
+    data object AboutInstitution : BottomScreens<DivisionsRoute>(name = "Institución", icon = R.drawable.baseline_business_24, route = DivisionsRoute)
 
 }
 
