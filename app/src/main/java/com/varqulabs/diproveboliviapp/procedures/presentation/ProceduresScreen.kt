@@ -12,11 +12,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.mapSaver
@@ -36,9 +38,9 @@ import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER_COPY
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.CopyIconButton
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.copyToClipboard
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
@@ -78,14 +80,19 @@ private val procedures = listOf(
     ),
 )
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProceduresScreen(
 
 ) {
 
+    val lazyListState = rememberLazyListState()
     var currentSelected by rememberSaveable(stateSaver = ProcedureDiproveSaver) {
         mutableStateOf<ProcedureDiprove?>(null)
+    }
+
+    LaunchedEffect(currentSelected) {
+        lazyListState.animateScrollToItem(2)
     }
 
     Scaffold(
@@ -102,6 +109,7 @@ fun ProceduresScreen(
                 .padding(paddingValues)
         ) {
             LazyColumn(
+                state = lazyListState,
                 modifier = it,
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -165,6 +173,7 @@ private fun BankNumberAndCopy(
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
         Text(
