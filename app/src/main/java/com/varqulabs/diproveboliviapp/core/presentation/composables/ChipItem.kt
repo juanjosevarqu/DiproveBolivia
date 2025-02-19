@@ -1,6 +1,7 @@
 package com.varqulabs.diproveboliviapp.core.presentation.composables
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SelectableChipColors
@@ -8,6 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -24,7 +27,12 @@ fun ChipItem(
         border = BorderStroke(1.dp, Color(0xFF004D40)),
         shape = MaterialTheme.shapes.large,
         label = {
-            Text(text = text)
+            Text(
+                text = text,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
+                textAlign = TextAlign.Center,
+            )
         },
         selected = selected,
         colors = SelectableChipColors(
