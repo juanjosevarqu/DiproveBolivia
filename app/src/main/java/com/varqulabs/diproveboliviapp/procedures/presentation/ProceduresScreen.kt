@@ -92,7 +92,9 @@ fun ProceduresScreen(
     }
 
     LaunchedEffect(currentSelected) {
-        lazyListState.animateScrollToItem(2)
+        if (currentSelected != null) {
+            lazyListState.animateScrollToItem(2)
+        }
     }
 
     Scaffold(
