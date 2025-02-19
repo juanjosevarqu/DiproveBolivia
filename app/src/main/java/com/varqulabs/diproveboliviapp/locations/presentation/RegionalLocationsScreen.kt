@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -89,7 +90,13 @@ fun RegionalLocationsScreen(
         topBar = {
             DefaultAppBar(
                 title = stringResource(R.string.copy_diprove_regional_directorates),
-
+                actions = {
+                    Image(
+                        modifier = Modifier.size(92.dp),
+                        painter = painterResource(id = R.drawable.logo_policia_boliviana),
+                        contentDescription = "Logo Policia boliviana"
+                    )
+                },
             )
         },
         containerColor = Color(0xFFFEFEFE)

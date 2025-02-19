@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -92,11 +93,19 @@ fun ProceduresScreen(
 
     Scaffold(
         topBar = {
-            DefaultAppBar(title = stringResource(R.string.copy_services_offered))
+            DefaultAppBar(
+                title = stringResource(R.string.copy_services_offered),
+                actions = {
+                    Image(
+                        modifier = Modifier.size(92.dp),
+                        painter = painterResource(id = R.drawable.logo_policia_boliviana),
+                        contentDescription = "Logo Policia boliviana"
+                    )
+                },
+            )
         },
         containerColor = Color(0xFFFEFEFE)
     ) { paddingValues ->
-
         DiprovePoliceBackgroundContainer(
             modifierImage = Modifier
                 .fillMaxSize()
@@ -107,7 +116,7 @@ fun ProceduresScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 contentPadding = PaddingValues(
-                    top = paddingValues.calculateTopPadding(),
+                    top = paddingValues.calculateTopPadding() + 16.dp,
                     bottom = paddingValues.calculateBottomPadding() + 18.dp,
                     start = 16.dp,
                     end = 16.dp

@@ -41,7 +41,7 @@ fun DiproveBoliviappTheme(
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
     val windowColor = activity.window
     SideEffect {
-        WindowCompat.getInsetsController(windowColor, windowColor.decorView).isAppearanceLightStatusBars = true
+        WindowCompat.getInsetsController(windowColor, windowColor.decorView).isAppearanceLightStatusBars = false
     }
 
     MaterialTheme(

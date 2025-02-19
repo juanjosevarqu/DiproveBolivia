@@ -75,10 +75,6 @@ fun HomeScreen(
                         contentDescription = "Logo Policia boliviana"
                     )
                 },
-                expandedHeight = 124.dp,
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color(0xFFFEFEFE)
-                )
             )
         },
         containerColor = Color(0xFFFEFEFE)
