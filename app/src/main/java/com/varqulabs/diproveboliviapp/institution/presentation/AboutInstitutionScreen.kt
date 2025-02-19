@@ -74,6 +74,13 @@ fun AboutInstitutionScreen(
                         contentDescription = "Logo Policia boliviana"
                     )
                 },
+                navigationIcon = {
+                    Image(
+                        modifier = Modifier.size(92.dp),
+                        painter = painterResource(id = R.drawable.logo_diprove_bolivia),
+                        contentDescription = "Logo diprove"
+                    )
+                },
             )
         },
         containerColor = Color(0xFFFEFEFE)

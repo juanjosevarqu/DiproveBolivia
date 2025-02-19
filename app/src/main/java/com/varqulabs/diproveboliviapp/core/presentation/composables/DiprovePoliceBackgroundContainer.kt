@@ -3,12 +3,10 @@ package com.varqulabs.diproveboliviapp.core.presentation.composables
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import com.varqulabs.diproveboliviapp.R
 
 @Composable
@@ -23,10 +21,10 @@ fun DiprovePoliceBackgroundContainer(
     ) {
 
         Image(
-            modifier = modifierImage.padding(48.dp),
+            modifier = modifierImage,
             contentScale = ContentScale.Fit,
-            alpha = 0.1f,
-            painter = painterResource(id = R.drawable.logo_policia_boliviana),
+            alpha = 0.15f,
+            painter = painterResource(id = R.drawable.logo_diprove_bolivia),
             contentDescription = "Logo policia boliviana de fondo"
         )
 
