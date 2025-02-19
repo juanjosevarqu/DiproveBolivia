@@ -22,7 +22,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -37,7 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DefaultAppBar
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveFunctionItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import kotlinx.coroutines.delay
@@ -58,23 +57,8 @@ fun HomeScreen(
 ) {
     Scaffold(
         topBar = {
-            DefaultAppBar(
-                modifier = Modifier,
-                title = "DIPROVE CBBA.",
-                navigationIcon = {
-                    Image(
-                        modifier = Modifier.size(92.dp),
-                        painter = painterResource(id = R.drawable.logo_diprove_bolivia),
-                        contentDescription = "Logo diprove"
-                    )
-                },
-                actions = {
-                    Image(
-                        modifier = Modifier.size(92.dp),
-                        painter = painterResource(id = R.drawable.logo_policia_boliviana),
-                        contentDescription = "Logo Policia boliviana"
-                    )
-                },
+            DiproveCenterAppBar(
+                title = "DIPROVE COCHABAMBA",
             )
         },
         containerColor = Color(0xFFFEFEFE)

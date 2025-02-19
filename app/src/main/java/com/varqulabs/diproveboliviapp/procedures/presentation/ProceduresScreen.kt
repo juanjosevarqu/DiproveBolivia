@@ -6,14 +6,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.FlowRowOverflow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER_COPY
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DefaultAppBar
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.CopyIconButton
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
@@ -93,22 +90,8 @@ fun ProceduresScreen(
 
     Scaffold(
         topBar = {
-            DefaultAppBar(
+            DiproveCenterAppBar(
                 title = stringResource(R.string.copy_services_offered),
-                actions = {
-                    Image(
-                        modifier = Modifier.size(92.dp),
-                        painter = painterResource(id = R.drawable.logo_policia_boliviana),
-                        contentDescription = "Logo Policia boliviana"
-                    )
-                },
-                navigationIcon = {
-                    Image(
-                        modifier = Modifier.size(92.dp),
-                        painter = painterResource(id = R.drawable.logo_diprove_bolivia),
-                        contentDescription = "Logo diprove"
-                    )
-                },
             )
         },
         containerColor = Color(0xFFFEFEFE)
@@ -137,11 +120,10 @@ fun ProceduresScreen(
                 }
 
                 item {
-                    FlowRow(
-                        overflow = FlowRowOverflow.Clip,
-                        modifier = Modifier.fillMaxWidth(1f),
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
                         verticalArrangement = Arrangement.spacedBy(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         procedures.forEach { procedure ->
                             ChipItem(
