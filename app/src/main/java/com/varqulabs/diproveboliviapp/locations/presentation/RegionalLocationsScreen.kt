@@ -242,7 +242,7 @@ private val RegionalDiproveLocationSaver = run {
     mapSaver<RegionalDiproveLocation?>(
         save = {
             mapOf(
-                id_title to (it?.title ?: 0),
+                id_title to (it?.title ?: R.string.copy_diprove_central),
                 id_previewLocationImg to (it?.previewLocationImg ?: R.drawable.diprove_central_ubicacion),
                 id_googleMapsURL to (it?.googleMapsURL ?: "")
             )

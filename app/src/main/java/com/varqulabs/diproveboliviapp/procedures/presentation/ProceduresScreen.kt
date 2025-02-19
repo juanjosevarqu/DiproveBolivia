@@ -213,7 +213,7 @@ private val ProcedureDiproveSaver = run {
     mapSaver<ProcedureDiprove?>(
         save = {
             mapOf(
-                id_name to (it?.name ?: 0),
+                id_name to (it?.name ?: R.string.copy_services),
                 id_procedure_img to (it?.image ?: R.drawable.tramites_y_servicios_diprove_cbba)
             )
         },

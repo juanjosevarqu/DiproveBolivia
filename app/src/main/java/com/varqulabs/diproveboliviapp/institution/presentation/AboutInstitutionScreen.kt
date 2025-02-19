@@ -126,8 +126,8 @@ private val DiproveDivisionSaver = run {
     mapSaver<DiproveDivision?>(
         save = {
             mapOf(
-                id_name to (it?.name ?: 0),
-                id_description to (it?.description ?: 0),
+                id_name to (it?.name ?: R.string.copy_platform_division),
+                id_description to (it?.description ?: R.string.copy_platform_division_functions),
             )
         },
         restore = {
