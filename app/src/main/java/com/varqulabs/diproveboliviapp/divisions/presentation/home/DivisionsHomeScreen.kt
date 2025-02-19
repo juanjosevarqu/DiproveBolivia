@@ -1,5 +1,6 @@
 package com.varqulabs.diproveboliviapp.divisions.presentation.home
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -10,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -50,7 +50,10 @@ fun DivisionsHomeScaffold(
             val navController = rememberNavController()
 
             NavHost(
-                modifier = it.padding(paddingValues),
+                modifier = it.padding(PaddingValues(
+                    top = paddingValues.calculateTopPadding(),
+                    bottom = 0.dp
+                )),
                 navController = navController,
                 startDestination = DivisionsRoute,
             ) {

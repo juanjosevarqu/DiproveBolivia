@@ -1,7 +1,6 @@
 package com.varqulabs.diproveboliviapp.core.presentation.composables
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SelectableChipColors

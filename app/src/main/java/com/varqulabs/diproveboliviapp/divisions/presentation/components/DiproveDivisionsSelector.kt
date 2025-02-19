@@ -2,6 +2,7 @@ package com.varqulabs.diproveboliviapp.divisions.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,7 +17,7 @@ fun DiproveDivisionsSelector(
     onClickDivision: (divisionId: Int) -> Unit
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.padding(horizontal =12.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
