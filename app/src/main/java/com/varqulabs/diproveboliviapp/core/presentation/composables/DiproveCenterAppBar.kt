@@ -51,18 +51,32 @@ fun DiproveCenterAppBar(
                 )
             }
         },
-        actions = {
-            Image(
-                modifier = Modifier.size(64.dp),
-                painter = painterResource(id = R.drawable.logo_policia_boliviana),
-                contentDescription = "Logo Policia boliviana"
-            )
-        },
         navigationIcon = {
-            Image(
+            /*Image(
                 modifier = Modifier.size(64.dp),
                 painter = painterResource(id = R.drawable.logo_diprove_bolivia),
                 contentDescription = "Logo diprove"
+            )*/
+            PulsatingImage(
+                modifier = Modifier.size(64.dp),
+                image = R.drawable.logo_diprove_bolivia,
+                contentDescription = "Logo diprove",
+                //pulseRange = 0.95f..1.05f,
+                //durationMillis = 800
+            )
+        },
+        actions = {
+            /*Image(
+                modifier = Modifier.size(64.dp),
+                painter = painterResource(id = R.drawable.logo_policia_boliviana),
+                contentDescription = "Logo Policia boliviana"
+            )*/
+            PulsatingImage(
+                modifier = Modifier.size(64.dp),
+                image = R.drawable.logo_policia_boliviana,
+                contentDescription = "Logo Policia boliviana",
+                //pulseRange = 0.95f..1.05f,
+                //durationMillis = 800
             )
         },
         expandedHeight = expandedHeight,
