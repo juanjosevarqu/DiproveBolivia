@@ -40,12 +40,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.varqulabs.diproveboliviapp.R
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.launchExternalIntent
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
-
 
 private val regionalDiproveLocations = listOf(
     RegionalDiproveLocation(
@@ -237,21 +236,27 @@ private const val id_title = "ID_TITLE"
 private const val id_previewLocationImg = "ID_PREVIEW_LOCATION_IMG"
 private const val id_googleMapsURL = "ID_GOOGLE_MAPS_URL"
 
-private val RegionalDiproveLocationSaver = run {
-    mapSaver<RegionalDiproveLocation?>(
-        save = {
+private val RegionalDiproveLocationSaver = mapSaver<RegionalDiproveLocation?>(
+    save = { location ->
+        if (location == null) {
+            emptyMap()
+        } else {
             mapOf(
-                id_title to (it?.title ?: R.string.copy_diprove_central),
-                id_previewLocationImg to (it?.previewLocationImg ?: R.drawable.diprove_central_ubicacion),
-                id_googleMapsURL to (it?.googleMapsURL ?: "")
-            )
-        },
-        restore = {
-            RegionalDiproveLocation(
-                title = it[id_title] as Int,
-                previewLocationImg = it[id_previewLocationImg] as Int,
-                googleMapsURL = it[id_googleMapsURL] as String
+                id_title to location.title,
+                id_previewLocationImg to location.previewLocationImg,
+                id_googleMapsURL to location.googleMapsURL
             )
         }
-    )
-}
+    },
+    restore = { map ->
+        if (map.isEmpty()) {
+            null
+        } else {
+            RegionalDiproveLocation(
+                title = map[id_title] as Int,
+                previewLocationImg = map[id_previewLocationImg] as Int,
+                googleMapsURL = map[id_googleMapsURL] as String
+            )
+        }
+    }
+)
