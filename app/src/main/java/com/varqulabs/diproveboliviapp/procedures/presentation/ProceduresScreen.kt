@@ -48,41 +48,6 @@ import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePolic
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.copyToClipboard
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
 
-private val procedures = listOf(
-    ProcedureDiprove(
-        name = R.string.copy_tranference,
-        image = R.drawable.tranferencia_vehiculo
-    ),
-    ProcedureDiprove(
-        name = R.string.copy_missing_plate,
-        image = R.drawable.extravio_de_placa
-    ),
-    ProcedureDiprove(
-        name = R.string.copy_color_change,
-        image = R.drawable.cambio_color_vehiculo
-    ),
-    ProcedureDiprove(
-        name = R.string.copy_structure_change,
-        image = R.drawable.cambio_de_estructura
-    ),
-    ProcedureDiprove(
-        name = R.string.copy_motor_replacement,
-        image = R.drawable.cambio_de_motor
-    ),
-    ProcedureDiprove(
-        name = R.string.copy_authenticity_certificate,
-        image = R.drawable.certif_autenticidad_vehiculo
-    ),
-    ProcedureDiprove(
-        name = R.string.copy_new_registration,
-        image = R.drawable.inscripcion_nuevo_vehiculo
-    ),
-    ProcedureDiprove(
-        name = R.string.copy_chemical_recovery,
-        image = R.drawable.revenido_quimico
-    ),
-)
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProceduresScreen(
@@ -247,4 +212,39 @@ private val ProcedureDiproveSaver = mapSaver<ProcedureDiprove?>(
             )
         }
     }
+)
+
+private val procedures = listOf(
+    ProcedureDiprove(
+        name = R.string.copy_tranference,
+        image = R.drawable.tranferencia_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_missing_plate,
+        image = R.drawable.extravio_de_placa
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_color_change,
+        image = R.drawable.cambio_color_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_structure_change,
+        image = R.drawable.cambio_de_estructura
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_motor_replacement,
+        image = R.drawable.cambio_de_motor
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_authenticity_certificate,
+        image = R.drawable.certif_autenticidad_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_new_registration,
+        image = R.drawable.inscripcion_nuevo_vehiculo
+    ),
+    ProcedureDiprove(
+        name = R.string.copy_chemical_recovery,
+        image = R.drawable.revenido_quimico
+    ),
 )
