@@ -2,12 +2,11 @@ package com.varqulabs.diproveboliviapp.locations.presentation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.FlowRowOverflow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
@@ -15,16 +14,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.mapSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -35,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -74,14 +78,27 @@ private val regionalDiproveLocations = listOf(
     ),
 )
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegionalLocationsScreen(
 
 ) {
 
+    val lazyListState = rememberLazyListState()
     var currentRegionalSelected by rememberSaveable(stateSaver = RegionalDiproveLocationSaver) {
         mutableStateOf<RegionalDiproveLocation?>(null)
+    }
+
+    val density = LocalDensity.current
+    val itemSizePx = remember { with(density) { 360.dp.toPx() } }
+
+    LaunchedEffect(currentRegionalSelected) {
+        if (currentRegionalSelected != null) {
+            lazyListState.animateScrollBy(
+                value = itemSizePx * 1,
+                animationSpec = tween(1200)
+            )
+        }
     }
 
     Scaffold(
@@ -100,6 +117,7 @@ fun RegionalLocationsScreen(
         ) {
             LazyColumn(
                 modifier = it,
+                state = lazyListState,
                 verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
                 contentPadding = PaddingValues(
                     top = paddingValues.calculateTopPadding() + 12.dp,
@@ -109,37 +127,25 @@ fun RegionalLocationsScreen(
                 )
             ) {
 
-                if (currentRegionalSelected != null) {
-                    item {
-                        FlowRow(
-                            overflow = FlowRowOverflow.Clip,
-                            modifier = Modifier.fillMaxWidth(1f),
-                            verticalArrangement = Arrangement.spacedBy(0.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            regionalDiproveLocations.forEach { regional ->
-                                ChipItem(
-                                    text = stringResource(regional.title),
-                                    onClick = { currentRegionalSelected = regional },
-                                    selected = regional == currentRegionalSelected
-                                )
-                            }
-                        }
-                    }
-                } else {
-                    item {
-                        Column(
-                            modifier = Modifier.fillMaxSize(),
-                            verticalArrangement = Arrangement.spacedBy(4.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            regionalDiproveLocations.forEach { regional ->
-                                ChipItem(
-                                    text = stringResource(regional.title),
-                                    onClick = { currentRegionalSelected = regional },
-                                    selected = regional == currentRegionalSelected
-                                )
-                            }
+                item {
+                    Text(
+                        text = stringResource(R.string.copy_diprove_regional_suggestion),
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+
+                item {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        regionalDiproveLocations.forEach { regional ->
+                            ChipItem(
+                                text = stringResource(regional.title),
+                                onClick = { currentRegionalSelected = regional },
+                                selected = regional == currentRegionalSelected
+                            )
                         }
                     }
                 }
