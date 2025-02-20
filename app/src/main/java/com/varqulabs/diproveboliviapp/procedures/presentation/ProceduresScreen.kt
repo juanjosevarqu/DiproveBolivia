@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -90,7 +91,7 @@ fun ProceduresScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 contentPadding = PaddingValues(
                     top = paddingValues.calculateTopPadding() + 16.dp,
-                    bottom = paddingValues.calculateBottomPadding() + 18.dp,
+                    bottom = paddingValues.calculateBottomPadding() + 32.dp,
                     start = 16.dp,
                     end = 16.dp
                 )
@@ -124,8 +125,12 @@ fun ProceduresScreen(
                             Image(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(bottom = 12.dp)
-                                    .clip(RoundedCornerShape(12.dp)),
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .border(
+                                        width = 1.dp,
+                                        color = Color(0xFFD0A82D),
+                                        shape = RoundedCornerShape(12.dp)
+                                    ),
                                 contentScale = ContentScale.FillWidth,
                                 painter = painterResource(id = procedure.image),
                                 contentDescription = "Imagen del procedimiento"
