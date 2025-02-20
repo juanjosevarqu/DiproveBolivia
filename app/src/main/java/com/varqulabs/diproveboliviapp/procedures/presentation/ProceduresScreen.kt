@@ -100,7 +100,7 @@ fun ProceduresScreen(
         if (currentSelected != null) {
             lazyListState.animateScrollBy(
                 value = itemSizePx * 1,
-                animationSpec = tween(1500)
+                animationSpec = tween(1200)
             )
         }
     }
