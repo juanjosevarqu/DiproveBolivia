@@ -24,10 +24,9 @@ fun AppBottomNavigation(navController: NavController) {
 
     val bottomScreens = remember {
         listOf(
-            BottomScreens.Home,
-            BottomScreens.Locations,
-            BottomScreens.Procedures,
-            BottomScreens.AboutInstitution,
+            HomeScreens.Locations,
+            HomeScreens.Procedures,
+            HomeScreens.DiproveDivisions,
         )
     }
 

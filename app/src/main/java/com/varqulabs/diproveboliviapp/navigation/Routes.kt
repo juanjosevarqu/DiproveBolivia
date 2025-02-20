@@ -1,10 +1,17 @@
 package com.varqulabs.diproveboliviapp.navigation
 
+import androidx.annotation.DrawableRes
 import com.varqulabs.diproveboliviapp.R
 import kotlinx.serialization.Serializable
 
 @Serializable
 data object HomeRoute
+
+@Serializable
+data object WelcomeScreen
+
+@Serializable
+data object HomeScreen
 
 @Serializable
 data object LocationsRoute
@@ -25,19 +32,21 @@ data class DiproveDivisionScreen(val divisionId: Int)
 data object AboutAppRoute
 
 @Serializable
-sealed class BottomScreens<T>(val name: String, val icon: Int, val route: T) {
+data object SuggestionsRoute
+
+@Serializable
+sealed class HomeScreens<T>(val name: String, @DrawableRes val icon: Int, val route: T) {
 
     @Serializable
-    data object Home : BottomScreens<HomeRoute>(name = "Inicio", icon = R.drawable.baseline_home_24, route = HomeRoute)
+    data object Locations : HomeScreens<LocationsRoute>(name = "Direcciones", icon = R.drawable.baseline_share_location_24, route = LocationsRoute)
 
     @Serializable
-    data object Locations : BottomScreens<LocationsRoute>(name = "Direcciones", icon = R.drawable.baseline_share_location_24, route = LocationsRoute)
+    data object Procedures : HomeScreens<ProceduresRoute>(name = "Tramites y Servicios", icon = R.drawable.baseline_notes_24, route = ProceduresRoute)
 
     @Serializable
-    data object Procedures : BottomScreens<ProceduresRoute>(name = "Tramites", icon = R.drawable.baseline_notes_24, route = ProceduresRoute)
+    data object DiproveDivisions : HomeScreens<DivisionsRoute>(name = "Divisiones", icon = R.drawable.baseline_other_houses_24, route = DivisionsRoute)
 
     @Serializable
-    data object AboutInstitution : BottomScreens<DivisionsRoute>(name = "Institución", icon = R.drawable.baseline_business_24, route = DivisionsRoute)
+    data object Suggestions : HomeScreens<SuggestionsRoute>(name = "Recomendaciones", icon = R.drawable.baseline_recommend_24, route = SuggestionsRoute)
 
 }
-

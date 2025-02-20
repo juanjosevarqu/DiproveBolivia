@@ -1,10 +1,12 @@
 package com.varqulabs.diproveboliviapp.core.presentation.composables
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.varqulabs.diproveboliviapp.R
@@ -14,10 +16,13 @@ fun DiprovePoliceBackgroundContainer(
     modifier: Modifier = Modifier,
     modifierImage: Modifier = Modifier,
     modifierContent: Modifier = Modifier,
+    color: Color = Color(0xFFFEFEFE),
     content: @Composable (Modifier) -> Unit,
 ) {
     Box(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize().background(
+            color = color
+        ),
     ) {
 
         Image(

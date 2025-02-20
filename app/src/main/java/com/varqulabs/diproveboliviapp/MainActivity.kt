@@ -43,9 +43,9 @@ class MainActivity : ComponentActivity() {
                 var expandedFAB by remember { mutableStateOf(false) }
 
                 Scaffold(
-                    bottomBar = {
+                    /*bottomBar = {
                         AppBottomNavigation(navController = navController)
-                    },
+                    },*/
                     floatingActionButton = {
                         ExtendedFloatingActionButton(
                             expanded = expandedFAB,

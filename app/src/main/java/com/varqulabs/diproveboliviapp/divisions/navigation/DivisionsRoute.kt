@@ -8,7 +8,5 @@ import com.varqulabs.diproveboliviapp.navigation.DivisionsRoute
 fun NavGraphBuilder.divisionsRoute(
 
 ) {
-    composable<DivisionsRoute> {
-        DivisionsHomeScaffold()
-    }
+
 }

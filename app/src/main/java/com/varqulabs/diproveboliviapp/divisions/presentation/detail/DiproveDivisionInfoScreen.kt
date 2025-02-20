@@ -26,8 +26,10 @@ fun DiproveDivisionInfoScreen(
     onBack: () -> Unit
 ) {
     Column(
-        modifier = modifier.verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically)
+        modifier = modifier
+            .verticalScroll(rememberScrollState())
+            .padding(top = 24.dp, bottom = 72.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
         IconButton(

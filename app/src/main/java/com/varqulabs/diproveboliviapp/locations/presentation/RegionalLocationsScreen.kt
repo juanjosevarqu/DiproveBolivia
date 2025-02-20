@@ -118,9 +118,9 @@ fun RegionalLocationsScreen(
             LazyColumn(
                 modifier = it,
                 state = lazyListState,
-                verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(
-                    top = paddingValues.calculateTopPadding() + 12.dp,
+                    top = paddingValues.calculateTopPadding() + 24.dp,
                     start = 16.dp,
                     end = 16.dp,
                     bottom = 24.dp
