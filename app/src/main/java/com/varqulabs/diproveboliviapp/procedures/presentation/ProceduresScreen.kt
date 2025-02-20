@@ -2,10 +2,11 @@ package com.varqulabs.diproveboliviapp.procedures.presentation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.mapSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -30,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -90,10 +93,15 @@ fun ProceduresScreen(
     var currentSelected by rememberSaveable(stateSaver = ProcedureDiproveSaver) {
         mutableStateOf<ProcedureDiprove?>(null)
     }
+    val density = LocalDensity.current
+    val itemSizePx = remember { with(density) { 360.dp.toPx() } }
 
     LaunchedEffect(currentSelected) {
         if (currentSelected != null) {
-            lazyListState.animateScrollToItem(2)
+            lazyListState.animateScrollBy(
+                value = itemSizePx * 1,
+                animationSpec = tween(1500)
+            )
         }
     }
 
@@ -218,19 +226,25 @@ private data class ProcedureDiprove(
 private const val id_name = "ID_NAME"
 private const val id_procedure_img = "ID_PROCEDURE_IMG"
 
-private val ProcedureDiproveSaver = run {
-    mapSaver<ProcedureDiprove?>(
-        save = {
+private val ProcedureDiproveSaver = mapSaver<ProcedureDiprove?>(
+    save = { procedure ->
+        if (procedure == null) {
+            emptyMap()
+        } else {
             mapOf(
-                id_name to (it?.name ?: R.string.copy_services),
-                id_procedure_img to (it?.image ?: R.drawable.tramites_y_servicios_diprove_cbba)
-            )
-        },
-        restore = {
-            ProcedureDiprove(
-                name = it[id_name] as Int,
-                image = it[id_procedure_img] as Int
+                id_name to procedure.name,
+                id_procedure_img to procedure.image
             )
         }
-    )
-}
+    },
+    restore = { map ->
+        if (map.isEmpty()) {
+            null
+        } else {
+            ProcedureDiprove(
+                name = map[id_name] as Int,
+                image = map[id_procedure_img] as Int
+            )
+        }
+    }
+)
