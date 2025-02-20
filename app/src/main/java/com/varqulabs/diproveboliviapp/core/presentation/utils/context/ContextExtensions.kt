@@ -33,7 +33,7 @@ fun Context.launchExternalIntent(
     if (intent.resolveActivity(packageManager) != null) {
         startActivity(intent)
     } else {
-        Toast.makeText(this, "No se encontró la aplicación para abrir.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "No se encontró la aplicación para abrir.", Toast.LENGTH_SHORT).show()
     }
 }
 
