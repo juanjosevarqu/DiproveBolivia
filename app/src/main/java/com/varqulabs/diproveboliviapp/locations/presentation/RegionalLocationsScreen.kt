@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -185,6 +186,11 @@ fun PreviewLocationGoogleMaps(
                 .fillMaxWidth()
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(12.dp))
+                .border(
+                    width = 2.dp,
+                    color = Color(0xFFD0A82D),
+                    shape = RoundedCornerShape(12.dp)
+                )
                 .clickableSingle { context.launchExternalIntent(googleMapsURL) },
             contentScale = ContentScale.FillWidth,
             painter = painterResource(id = previewLocationImg),
