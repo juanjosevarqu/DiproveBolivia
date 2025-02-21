@@ -2,6 +2,7 @@ package com.varqulabs.diproveboliviapp.home.welcome.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -49,7 +50,12 @@ fun DiproveCarruselPager(
             state = pagerState,
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(12.dp)),
+                .clip(RoundedCornerShape(12.dp))
+                .border(
+                    width = 2.dp,
+                    color = Color(0xFFD0A82D),
+                    shape = RoundedCornerShape(12.dp)
+                ),
             pageSize = PageSize.Fill,
             contentPadding = PaddingValues(0.dp),
             pageSpacing = 8.dp

@@ -54,6 +54,12 @@ fun WelcomeScreen(
             ) {
 
                 item {
+                    DiproveCarruselPager(
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+
+                item {
                     Text(
                         text = "¡Bienvenido!",
                         maxLines = 1,
@@ -62,12 +68,6 @@ fun WelcomeScreen(
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Medium
                         )
-                    )
-                }
-
-                item {
-                    DiproveCarruselPager(
-                        modifier = Modifier.fillMaxWidth()
                     )
                 }
 
