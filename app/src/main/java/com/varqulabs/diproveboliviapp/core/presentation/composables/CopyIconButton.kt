@@ -10,9 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
 
 @Composable
 fun CopyIconButton(modifier: Modifier) {
@@ -30,8 +32,11 @@ fun CopyIconButton(modifier: Modifier) {
 
         Text(
             text = "Copiar",
-            color = Color(0xFF266748),
-            fontSize = 12.sp,
+            style = TextStyle(
+                fontSize = 12.sp,
+                fontFamily = BricolageGrotesque,
+                color = Color(0xFF266748),
+            ),
         )
     }
 }
