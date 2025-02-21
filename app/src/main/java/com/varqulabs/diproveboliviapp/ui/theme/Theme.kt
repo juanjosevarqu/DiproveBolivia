@@ -7,6 +7,8 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.core.view.WindowCompat
 import com.varqulabs.diproveboliviapp.MainActivity
 
@@ -39,9 +41,14 @@ fun DiproveBoliviappTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-    val windowColor = activity.window
+    val window = activity.window
     SideEffect {
-        WindowCompat.getInsetsController(windowColor, windowColor.decorView).isAppearanceLightStatusBars = false
+        window.navigationBarColor = Color(0xFF266346).toArgb()
+        WindowCompat.getInsetsController(window, window.decorView).run {
+            isAppearanceLightStatusBars = false
+            isAppearanceLightNavigationBars = false
+        }
+
     }
 
     MaterialTheme(
