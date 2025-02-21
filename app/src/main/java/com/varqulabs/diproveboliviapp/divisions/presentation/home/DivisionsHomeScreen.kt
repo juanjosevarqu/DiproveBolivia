@@ -26,6 +26,10 @@ import com.varqulabs.diproveboliviapp.domain.diproveDivisionsMap
 import com.varqulabs.diproveboliviapp.navigation.DiproveDivisionScreen
 import com.varqulabs.diproveboliviapp.navigation.DivisionsHomeScreen
 import com.varqulabs.diproveboliviapp.navigation.DivisionsRoute
+import com.varqulabs.diproveboliviapp.navigation.enterTransition
+import com.varqulabs.diproveboliviapp.navigation.exitTransition
+import com.varqulabs.diproveboliviapp.navigation.popEnterTransition
+import com.varqulabs.diproveboliviapp.navigation.popExitTransition
 import com.varqulabs.diproveboliviapp.navigation.utils.navigateBack
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,6 +60,10 @@ fun DivisionsHomeScaffold(
                 )),
                 navController = navController,
                 startDestination = DivisionsRoute,
+                enterTransition = { enterTransition() },
+                exitTransition = { exitTransition() },
+                popEnterTransition = { popEnterTransition() },
+                popExitTransition = { popExitTransition() }
             ) {
                 navigation<DivisionsRoute>(startDestination = DivisionsHomeScreen) {
 

@@ -1,5 +1,7 @@
 package com.varqulabs.diproveboliviapp.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -36,6 +39,10 @@ fun AppNavGraph(
         navController = navController,
         startDestination = WelcomeScreen,
         modifier = modifier,
+        enterTransition = { enterTransition() },
+        exitTransition = { exitTransition() },
+        popEnterTransition = { popEnterTransition() },
+        popExitTransition = { popExitTransition() }
     ) {
 
         composable<WelcomeScreen> {
@@ -100,11 +107,26 @@ fun AppNavGraph(
     }
 }
 
-/*
-fun NavHostController.navigateToSingleTop(route: Routes) {
-    navigate(route) {
-        popUpTo(graph.id) { saveState = true }
-        launchSingleTop = true
-        restoreState = true
-    }
-}*/
+fun AnimatedContentTransitionScope<NavBackStackEntry>.enterTransition() =
+    slideIntoContainer(
+        towards = AnimatedContentTransitionScope.SlideDirection.Left,
+        animationSpec = tween(600)
+    )
+
+fun AnimatedContentTransitionScope<NavBackStackEntry>.exitTransition() =
+    slideOutOfContainer(
+        towards = AnimatedContentTransitionScope.SlideDirection.Left,
+        animationSpec = tween(600)
+    )
+
+fun AnimatedContentTransitionScope<NavBackStackEntry>.popExitTransition() =
+    slideOutOfContainer(
+        towards = AnimatedContentTransitionScope.SlideDirection.Right,
+        animationSpec = tween(600)
+    )
+
+fun AnimatedContentTransitionScope<NavBackStackEntry>.popEnterTransition() =
+    slideIntoContainer(
+        towards = AnimatedContentTransitionScope.SlideDirection.Right,
+        animationSpec = tween(600)
+    )
