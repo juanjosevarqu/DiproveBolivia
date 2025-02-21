@@ -56,34 +56,7 @@ import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCente
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.launchExternalIntent
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
-
-private val regionalDiproveLocations = listOf(
-    RegionalDiproveLocation(
-        title = R.string.copy_diprove_central,
-        previewLocationImg = R.drawable.diprove_central_ubicacion,
-        googleMapsURL = "https://maps.app.goo.gl/XTVdRRLkorkYJWbx7"
-    ),
-    RegionalDiproveLocation(
-        title = R.string.copy_diprove_valle_bajo,
-        previewLocationImg = R.drawable.diprove_quillacollo_v_bajo_ubicacion,
-        googleMapsURL = "https://maps.app.goo.gl/Wwb3nHtuMkou7REG8"
-    ),
-    RegionalDiproveLocation(
-        title = R.string.copy_diprove_sacaba,
-        previewLocationImg = R.drawable.diprove_sacaba_ubicacion,
-        googleMapsURL = "https://maps.app.goo.gl/2ja4EeG16oc7EkuDA"
-    ),
-    RegionalDiproveLocation(
-        title = R.string.copy_diprove_epi_sur,
-        previewLocationImg = R.drawable.diprove_epi_sur_ubicacion,
-        googleMapsURL = "https://maps.app.goo.gl/xiYziSty8tRJDSMB7"
-    ),
-    RegionalDiproveLocation(
-        title = R.string.copy_diprove_valle_alto,
-        previewLocationImg = R.drawable.diprove_punata_v_alto_ubicacion,
-        googleMapsURL = "https://maps.app.goo.gl/zzxScdFNJGtNk8o8A"
-    ),
-)
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -136,14 +109,25 @@ fun RegionalLocationsScreen(
 
                 item {
                     Text(
+                        text = "Recomendación",
+                        style = TextStyle(
+                            fontSize = 18.sp,
+                            fontFamily = BricolageGrotesque,
+                            fontWeight = FontWeight.SemiBold,
+                        ),
+                    )
+                }
+
+                item {
+                    Text(
                         text = stringResource(R.string.copy_diprove_regional_suggestion),
                         style = TextStyle(
                             textAlign = TextAlign.Justify,
                             hyphens = Hyphens.Auto,
-                            fontSize = 15.sp,
-                            lineHeight = 28.sp,
-                            fontFamily = FontFamily.SansSerif,
-                            fontWeight = FontWeight.SemiBold
+                            fontSize = 14.sp,
+                            lineHeight = 22.sp,
+                            fontFamily = BricolageGrotesque,
+                            fontWeight = FontWeight.Medium
                         ),
                     )
                 }
@@ -250,6 +234,34 @@ fun ButtonWithLeadingIcon(
         }
     }
 }
+
+private val regionalDiproveLocations = listOf(
+    RegionalDiproveLocation(
+        title = R.string.copy_diprove_central,
+        previewLocationImg = R.drawable.diprove_central_ubicacion,
+        googleMapsURL = "https://maps.app.goo.gl/XTVdRRLkorkYJWbx7"
+    ),
+    RegionalDiproveLocation(
+        title = R.string.copy_diprove_valle_bajo,
+        previewLocationImg = R.drawable.diprove_quillacollo_v_bajo_ubicacion,
+        googleMapsURL = "https://maps.app.goo.gl/Wwb3nHtuMkou7REG8"
+    ),
+    RegionalDiproveLocation(
+        title = R.string.copy_diprove_sacaba,
+        previewLocationImg = R.drawable.diprove_sacaba_ubicacion,
+        googleMapsURL = "https://maps.app.goo.gl/2ja4EeG16oc7EkuDA"
+    ),
+    RegionalDiproveLocation(
+        title = R.string.copy_diprove_epi_sur,
+        previewLocationImg = R.drawable.diprove_epi_sur_ubicacion,
+        googleMapsURL = "https://maps.app.goo.gl/xiYziSty8tRJDSMB7"
+    ),
+    RegionalDiproveLocation(
+        title = R.string.copy_diprove_valle_alto,
+        previewLocationImg = R.drawable.diprove_punata_v_alto_ubicacion,
+        googleMapsURL = "https://maps.app.goo.gl/zzxScdFNJGtNk8o8A"
+    ),
+)
 
 private data class RegionalDiproveLocation(
     @StringRes val title: Int,
