@@ -45,7 +45,6 @@ fun HomeScreen(
             modifierImage = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
-            color = Color(0xFFC3C3C3)
         ) {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
