@@ -1,6 +1,5 @@
 package com.varqulabs.diproveboliviapp.core.presentation.composables
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -12,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -52,31 +50,17 @@ fun DiproveCenterAppBar(
             }
         },
         navigationIcon = {
-            /*Image(
-                modifier = Modifier.size(64.dp),
-                painter = painterResource(id = R.drawable.logo_diprove_bolivia),
-                contentDescription = "Logo diprove"
-            )*/
             PulsatingImage(
                 modifier = Modifier.size(64.dp),
                 image = R.drawable.logo_diprove_bolivia,
                 contentDescription = "Logo diprove",
-                //pulseRange = 0.95f..1.05f,
-                //durationMillis = 800
             )
         },
         actions = {
-            /*Image(
-                modifier = Modifier.size(64.dp),
-                painter = painterResource(id = R.drawable.logo_policia_boliviana),
-                contentDescription = "Logo Policia boliviana"
-            )*/
             PulsatingImage(
                 modifier = Modifier.size(64.dp),
                 image = R.drawable.logo_policia_boliviana,
                 contentDescription = "Logo Policia boliviana",
-                //pulseRange = 0.95f..1.05f,
-                //durationMillis = 800
             )
         },
         expandedHeight = expandedHeight,

@@ -43,7 +43,13 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.Hyphens
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
@@ -131,7 +137,14 @@ fun RegionalLocationsScreen(
                 item {
                     Text(
                         text = stringResource(R.string.copy_diprove_regional_suggestion),
-                        style = MaterialTheme.typography.bodyMedium
+                        style = TextStyle(
+                            textAlign = TextAlign.Justify,
+                            hyphens = Hyphens.Auto,
+                            fontSize = 15.sp,
+                            lineHeight = 28.sp,
+                            fontFamily = FontFamily.SansSerif,
+                            fontWeight = FontWeight.SemiBold
+                        ),
                     )
                 }
 

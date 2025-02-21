@@ -47,8 +47,7 @@ fun DiproveDescriptionItem(
                 hyphens = Hyphens.Auto,
                 fontSize = 15.sp,
                 lineHeight = 28.sp,
-                fontFamily = FontFamily.SansSerif
-
+                fontFamily = FontFamily.SansSerif,
             ),
         )
     }
