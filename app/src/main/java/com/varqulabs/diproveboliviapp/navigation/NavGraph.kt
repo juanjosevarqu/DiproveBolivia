@@ -1,11 +1,11 @@
 package com.varqulabs.diproveboliviapp.navigation
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveDescriptionItem
+import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.divisions.presentation.home.DivisionsHomeScaffold
 import com.varqulabs.diproveboliviapp.home.home.HomeScreen
 import com.varqulabs.diproveboliviapp.home.welcome.WelcomeScreen
@@ -70,23 +71,28 @@ fun AppNavGraph(
                 },
                 containerColor = Color(0xFFFEFEFE)
             ) { paddingValues ->
-                Column(
-                    modifier = Modifier
-                        .padding(
-                            top = paddingValues.calculateTopPadding() + 12.dp,
-                            start = 16.dp,
-                            end = 16.dp
-                        )
-                        .fillMaxWidth()
-                        .verticalScroll(rememberScrollState()),
-                    verticalArrangement = Arrangement.Center
+                DiprovePoliceBackgroundContainer(
+                    modifierImage = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
                 ) {
-                    repeat(3) {
-                        DiproveDescriptionItem(
-                            modifier = Modifier.fillMaxWidth(),
-                            headingText = "Recomedacion: ${it + 1}",
-                            bodyText = R.string.copy_diprove_regional_suggestion
-                        )
+                    LazyColumn(
+                        modifier = it,
+                        contentPadding = PaddingValues(
+                            top = paddingValues.calculateTopPadding() + 24.dp,
+                            bottom = paddingValues.calculateBottomPadding() + 12.dp,
+                            start = 24.dp,
+                            end = 24.dp
+                        ),
+                        verticalArrangement = Arrangement.spacedBy(28.dp)
+                    ) {
+                        items(4) { number ->
+                            DiproveDescriptionItem(
+                                modifier = Modifier.fillMaxWidth(),
+                                headingText = "Recomedacion ${number + 1}",
+                                bodyText = R.string.copy_diprove_regional_suggestion_demo
+                            )
+                        }
                     }
                 }
             }

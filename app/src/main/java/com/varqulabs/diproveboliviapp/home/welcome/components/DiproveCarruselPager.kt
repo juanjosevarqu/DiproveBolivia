@@ -58,7 +58,7 @@ fun DiproveCarruselPager(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .aspectRatio(16 / 9f),
+                    .aspectRatio(1f),
                 contentScale = ContentScale.Crop,
                 painter = painterResource(id = imagesCarruselDiprove[index]),
                 contentDescription = "Imagen carrusel"

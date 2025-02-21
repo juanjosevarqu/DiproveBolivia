@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesqueSemiCondensed
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,8 +48,8 @@ fun DiproveCenterAppBar(
                         maxLines = 3,
                         overflow = TextOverflow.Ellipsis,
                         style = TextStyle(
-                            fontSize = 20.sp,
-                            fontFamily = BricolageGrotesque,
+                            fontSize = 22.sp,
+                            fontFamily = BricolageGrotesqueSemiCondensed,
                             fontWeight = FontWeight.ExtraBold,
                             color = Color(0xFFFEFEFE),
                             textAlign = TextAlign.Center,

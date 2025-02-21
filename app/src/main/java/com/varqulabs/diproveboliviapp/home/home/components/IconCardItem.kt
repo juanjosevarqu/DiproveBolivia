@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
@@ -26,6 +25,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesqueSemiCondensed
 
 @Composable
 fun IconCardItem(
@@ -54,7 +54,7 @@ fun IconCardItem(
             contentDescription = "Navegar a pantalla",
             tint = Color(0xFFD9AB24),
             modifier = Modifier
-                .size(48.dp)
+                .size(36.dp)
         )
 
         Text(
@@ -64,7 +64,7 @@ fun IconCardItem(
             style = TextStyle(
                 hyphens = Hyphens.Auto,
                 fontSize = 16.sp,
-                fontFamily = FontFamily.SansSerif,
+                fontFamily = BricolageGrotesqueSemiCondensed,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF827717),

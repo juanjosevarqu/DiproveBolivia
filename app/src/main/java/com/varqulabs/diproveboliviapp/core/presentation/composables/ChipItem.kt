@@ -1,6 +1,7 @@
 package com.varqulabs.diproveboliviapp.core.presentation.composables
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SelectableChipColors
@@ -8,9 +9,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesqueSemiCondensed
 
 @Composable
 fun ChipItem(
@@ -24,13 +30,19 @@ fun ChipItem(
         onClick = onClick,
         leadingIcon = {},
         border = BorderStroke(1.dp, Color(0xFF004D40)),
-        shape = MaterialTheme.shapes.large,
+        shape = MaterialTheme.shapes.medium,
         label = {
             Text(
                 text = text,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
-                textAlign = TextAlign.Center,
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontFamily = BricolageGrotesqueSemiCondensed,
+                    fontWeight = FontWeight.Normal,
+                    textAlign = TextAlign.Center,
+                ),
+                modifier = Modifier.padding(vertical = 6.dp)
             )
         },
         selected = selected,
