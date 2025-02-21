@@ -36,6 +36,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,6 +49,7 @@ import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCente
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.copyToClipboard
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -158,7 +160,11 @@ private fun BankNumberAndCopy(
 
         Text(
             text = stringResource(R.string.copy_banco_union_number_account),
-            fontWeight = FontWeight.Medium
+            style = TextStyle(
+                fontSize = 18.sp,
+                fontFamily = BricolageGrotesque,
+                fontWeight = FontWeight.Medium,
+            ),
         )
 
         Row(
@@ -169,8 +175,10 @@ private fun BankNumberAndCopy(
 
             Text(
                 text = "N° $BANK_NUMBER",
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 28.sp,
+                style = TextStyle(
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.SemiBold,
+                ),
                 modifier = Modifier.align(Alignment.Top)
             )
 
