@@ -6,16 +6,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
 
 @Composable
 fun DiproveDescriptionItem(
@@ -32,9 +31,8 @@ fun DiproveDescriptionItem(
             text = headingText,
             style = TextStyle(
                 fontSize = 20.sp,
-                fontFamily = FontFamily.Serif,
+                fontFamily = BricolageGrotesque,
                 fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF1B1B1B)
             ),
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
@@ -46,8 +44,8 @@ fun DiproveDescriptionItem(
                 textAlign = TextAlign.Justify,
                 hyphens = Hyphens.Auto,
                 fontSize = 15.sp,
-                lineHeight = 28.sp,
-                fontFamily = FontFamily.SansSerif,
+                lineHeight = 26.sp,
+                fontFamily = BricolageGrotesque,
             ),
         )
     }
