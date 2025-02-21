@@ -45,11 +45,11 @@ fun WelcomeScreen(
             LazyColumn(
                 modifier = it,
                 contentPadding = PaddingValues(
-                    top = paddingValues.calculateTopPadding(),
+                    top = paddingValues.calculateTopPadding() + 36.dp,
                     start = 12.dp,
                     end = 12.dp
                 ),
-                verticalArrangement = Arrangement.spacedBy(28.dp, Alignment.CenterVertically),
+                verticalArrangement = Arrangement.spacedBy(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
