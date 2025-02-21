@@ -44,3 +44,11 @@ val BricolageGrotesque = FontFamily(
     Font(R.font.bricolage_grotesque_light, FontWeight.Light),
     Font(R.font.bricolage_grotesque_extra_light, FontWeight.ExtraLight),
 )
+
+val BricolageGrotesqueSemiCondensed = FontFamily(
+    Font(R.font.bricolage_grotesque_semi_condensed_regular, FontWeight.Normal),
+    Font(R.font.bricolage_grotesque_semi_condensed_medium, FontWeight.Medium),
+    Font(R.font.bricolage_grotesque_semi_condensed_semi_bold, FontWeight.SemiBold),
+    Font(R.font.bricolage_grotesque_semi_condensed_bold, FontWeight.Bold),
+    Font(R.font.bricolage_grotesque_semi_condensed_extra_bold, FontWeight.ExtraBold)
+)
