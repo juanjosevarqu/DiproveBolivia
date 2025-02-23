@@ -58,6 +58,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
 
+    // Splash Screen
+    implementation(libs.androidx.splashscreen)
+
     // Serialization
     implementation(libs.kotlinx.serialization.json)
 

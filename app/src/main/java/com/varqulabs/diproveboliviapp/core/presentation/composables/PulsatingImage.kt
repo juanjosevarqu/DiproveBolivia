@@ -20,7 +20,7 @@ fun PulsatingImage(
     modifier: Modifier = Modifier,
     @DrawableRes image: Int,
     contentDescription: String? = null,
-    pulseRange: ClosedFloatingPointRange<Float> = 1.0f..1.05f,
+    pulseRange: ClosedFloatingPointRange<Float> = 1.0f..1.08f,
     durationMillis: Int = 1000
 ) {
 

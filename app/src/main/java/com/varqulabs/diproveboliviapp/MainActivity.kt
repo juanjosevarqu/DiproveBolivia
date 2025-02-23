@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
@@ -21,12 +22,24 @@ import com.varqulabs.diproveboliviapp.core.presentation.composables.SocialFloati
 import com.varqulabs.diproveboliviapp.navigation.AppNavGraph
 import com.varqulabs.diproveboliviapp.navigation.utils.getRoute
 import com.varqulabs.diproveboliviapp.ui.theme.DiproveBoliviappTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val splashsScreen = installSplashScreen()
+        splashsScreen.setKeepOnScreenCondition { true }
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(500L)
+            splashsScreen.setKeepOnScreenCondition { false }
+        }
+
         setContent {
             DiproveBoliviappTheme {
 
