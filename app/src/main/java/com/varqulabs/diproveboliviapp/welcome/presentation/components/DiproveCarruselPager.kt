@@ -1,4 +1,4 @@
-package com.varqulabs.diproveboliviapp.home.welcome.components
+package com.varqulabs.diproveboliviapp.welcome.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

@@ -73,7 +73,7 @@ fun ProceduresScreen(
         }
     }
 
-    Scaffold(
+    /*Scaffold(
         topBar = {
             DiproveCenterAppBar(
                 title = stringResource(R.string.copy_services_offered),
@@ -85,15 +85,15 @@ fun ProceduresScreen(
             modifierImage = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-        ) {
+        ) {*/
             LazyColumn(
                 state = lazyListState,
-                modifier = it,
+                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 contentPadding = PaddingValues(
-                    top = paddingValues.calculateTopPadding() + 16.dp,
-                    bottom = paddingValues.calculateBottomPadding() + 32.dp,
+                    top = 16.dp,
+                    bottom = 80.dp,
                     start = 16.dp,
                     end = 16.dp
                 )
@@ -141,8 +141,8 @@ fun ProceduresScreen(
                     }
                 }
             }
-        }
-    }
+        /*}
+    }*/
 }
 
 @Composable

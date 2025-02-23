@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,8 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -44,7 +41,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
@@ -52,13 +48,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varqulabs.diproveboliviapp.R
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.launchExternalIntent
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
 import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegionalLocationsScreen(
 
@@ -81,83 +74,67 @@ fun RegionalLocationsScreen(
         }
     }
 
-    Scaffold(
-        topBar = {
-            DiproveCenterAppBar(
-                title = stringResource(R.string.copy_diprove_regional_directorates),
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        state = lazyListState,
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = PaddingValues(
+            top = 24.dp,
+            start = 16.dp,
+            end = 16.dp,
+            bottom = 24.dp
+        )
+    ) {
+
+        item {
+            Text(
+                text = "Recomendación",
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontFamily = BricolageGrotesque,
+                    fontWeight = FontWeight.SemiBold,
+                ),
             )
-        },
-        containerColor = Color(0xFFFEFEFE)
-    ) { paddingValues ->
+        }
 
-        DiprovePoliceBackgroundContainer(
-            modifierImage = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            LazyColumn(
-                modifier = it,
-                state = lazyListState,
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                contentPadding = PaddingValues(
-                    top = paddingValues.calculateTopPadding() + 24.dp,
-                    start = 16.dp,
-                    end = 16.dp,
-                    bottom = 24.dp
-                )
+        item {
+            Text(
+                text = stringResource(R.string.copy_diprove_regional_suggestion),
+                style = TextStyle(
+                    textAlign = TextAlign.Justify,
+                    hyphens = Hyphens.Auto,
+                    fontSize = 14.sp,
+                    lineHeight = 22.sp,
+                    fontFamily = BricolageGrotesque,
+                    fontWeight = FontWeight.Medium
+                ),
+            )
+        }
+
+        item {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
-                item {
-                    Text(
-                        text = "Recomendación",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontFamily = BricolageGrotesque,
-                            fontWeight = FontWeight.SemiBold,
-                        ),
+                regionalDiproveLocations.forEach { regional ->
+                    ChipItem(
+                        text = stringResource(regional.title),
+                        onClick = { currentRegionalSelected = regional },
+                        selected = regional == currentRegionalSelected
                     )
                 }
+            }
+        }
 
+        if (currentRegionalSelected != null) {
+            currentRegionalSelected?.let {
                 item {
-                    Text(
-                        text = stringResource(R.string.copy_diprove_regional_suggestion),
-                        style = TextStyle(
-                            textAlign = TextAlign.Justify,
-                            hyphens = Hyphens.Auto,
-                            fontSize = 14.sp,
-                            lineHeight = 22.sp,
-                            fontFamily = BricolageGrotesque,
-                            fontWeight = FontWeight.Medium
-                        ),
+                    PreviewLocationGoogleMaps(
+                        modifier = Modifier.fillMaxWidth(),
+                        googleMapsURL = it.googleMapsURL,
+                        previewLocationImg = it.previewLocationImg
                     )
-                }
-
-                item {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.spacedBy(4.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        regionalDiproveLocations.forEach { regional ->
-                            ChipItem(
-                                text = stringResource(regional.title),
-                                onClick = { currentRegionalSelected = regional },
-                                selected = regional == currentRegionalSelected
-                            )
-                        }
-                    }
-                }
-
-                if (currentRegionalSelected != null) {
-                    currentRegionalSelected?.let {
-                        item {
-                            PreviewLocationGoogleMaps(
-                                modifier = Modifier.fillMaxWidth(),
-                                googleMapsURL = it.googleMapsURL,
-                                previewLocationImg = it.previewLocationImg
-                            )
-                        }
-                    }
                 }
             }
         }
