@@ -12,7 +12,7 @@ composeBom = "2025.01.01"
 
 kotlinxSerializationJson = "1.6.3"
 kotlinxSerialization = "1.9.23"
-navigationCompose = "2.8.6"
+navigationCompose = "2.8.7"
 
 koin = "4.0.2"
 koinAnnotations = "2.0.0-RC1"
