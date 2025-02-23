@@ -5,13 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
@@ -41,9 +40,8 @@ fun DiproveCarruselPager(
         pagerState.scrollToPage((pagerState.currentPage + 1) % imagesCarruselDiprove.size)
     }
 
-    Column(
+    Box(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
 
         HorizontalPager(
@@ -64,7 +62,7 @@ fun DiproveCarruselPager(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .aspectRatio(1f),
+                    .aspectRatio(10/16f),
                 contentScale = ContentScale.Crop,
                 painter = painterResource(id = imagesCarruselDiprove[index]),
                 contentDescription = "Imagen carrusel"
@@ -73,12 +71,13 @@ fun DiproveCarruselPager(
 
         Row(
             modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 12.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
         ) {
             repeat(imagesCarruselDiprove.size) { iteration ->
-                val color = if (pagerState.currentPage == iteration) Color.DarkGray else Color.Gray
+                val color = if (pagerState.currentPage == iteration) Color.DarkGray else Color.LightGray
                 Box(
                     modifier = Modifier
                         .clip(CircleShape)
