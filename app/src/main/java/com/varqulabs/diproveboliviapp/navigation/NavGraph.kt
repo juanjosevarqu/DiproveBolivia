@@ -7,12 +7,12 @@ import androidx.navigation.compose.NavHost
 import com.varqulabs.diproveboliviapp.divisions.navigation.divisionsRoute
 import com.varqulabs.diproveboliviapp.home.navigation.homeRoute
 import com.varqulabs.diproveboliviapp.locations.navigation.locationsRoute
-import com.varqulabs.diproveboliviapp.navigation.utils.enterTransition
-import com.varqulabs.diproveboliviapp.navigation.utils.exitTransition
+import com.varqulabs.diproveboliviapp.navigation.utils.enterZoomIn
+import com.varqulabs.diproveboliviapp.navigation.utils.exitZoomOut
 import com.varqulabs.diproveboliviapp.navigation.utils.navigateBack
 import com.varqulabs.diproveboliviapp.navigation.utils.navigateTo
-import com.varqulabs.diproveboliviapp.navigation.utils.popEnterTransition
-import com.varqulabs.diproveboliviapp.navigation.utils.popExitTransition
+import com.varqulabs.diproveboliviapp.navigation.utils.popEnterZoomIn
+import com.varqulabs.diproveboliviapp.navigation.utils.popExitZoomOut
 import com.varqulabs.diproveboliviapp.procedures.navigation.proceduresRoute
 import com.varqulabs.diproveboliviapp.suggestions.navigation.suggestionsRoute
 import com.varqulabs.diproveboliviapp.welcome.navigation.welcomeRoute
@@ -26,10 +26,10 @@ fun AppNavGraph(
         modifier = modifier,
         navController = navController,
         startDestination = Routes.Welcome,
-        enterTransition = { enterTransition() },
-        exitTransition = { exitTransition() },
-        popEnterTransition = { popEnterTransition() },
-        popExitTransition = { popExitTransition() }
+        enterTransition = { enterZoomIn() },
+        exitTransition = { exitZoomOut() },
+        popEnterTransition = { popEnterZoomIn() },
+        popExitTransition = { popExitZoomOut() },
     ) {
 
         welcomeRoute(
