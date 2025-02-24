@@ -30,3 +30,14 @@ val imagesHorizontalCarruselDiprove = listOf(
     R.drawable.diprove_carrusel_horizontal_10,
     R.drawable.diprove_carrusel_horizontal_11,
 )
+
+val diproveSuggestions = listOf(
+    Pair(
+        R.string.copy_diprove_suggestion_security_vehicle_title,
+        R.string.copy_diprove_suggestion_security_vehicle_description
+    ),
+    Pair(
+        R.string.copy_diprove_suggestion_buy_vehicle_title,
+        R.string.copy_diprove_suggestion_buy_vehicle_description
+    )
+)

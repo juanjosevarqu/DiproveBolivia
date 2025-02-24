@@ -27,9 +27,11 @@ fun <T> CarouselContent(
     list: List<T>,
     contentPadding: PaddingValues = PaddingValues(0.dp),
     pageSize: PageSize = PageSize.Fill,
+    autoScroll: Boolean = true,
     infiniteLoop: Boolean = false,
     widthItem: Dp = 300.dp,
     aspectRatio: Float = 3 / 4f,
+    pageSpacing: Dp = 16.dp,
     alignToCenter: Boolean = true,
     content: @Composable (contentModifier: Modifier, page: Int) -> Unit,
 ) {
@@ -42,8 +44,10 @@ fun <T> CarouselContent(
     val customContentPadding = remember { PaddingValues(horizontal = ((screenWidth - widthItem) / 2)) }
 
     LaunchedEffect(pagerState.currentPage) {
-        delay(2500L)
-        pagerState.scrollToPage((pagerState.currentPage + 1))
+        if (autoScroll) {
+            delay(2500L)
+            pagerState.scrollToPage((pagerState.currentPage + 1))
+        }
     }
 
     Box(
@@ -53,7 +57,7 @@ fun <T> CarouselContent(
         HorizontalPager(
             state = pagerState,
             modifier = Modifier.fillMaxWidth(),
-            pageSpacing = 16.dp,
+            pageSpacing = pageSpacing,
             contentPadding = if (alignToCenter) customContentPadding else contentPadding,
             pageSize = pageSize,
         ) { page ->

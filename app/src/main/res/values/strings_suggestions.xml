@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="copy_diprove_suggestions">RECOMENDACIONES DE DIPROVE</string>
+
+    <string name="copy_diprove_suggestion_security_vehicle_title">Medidas de Seguridad para Prevenir el Robo de su Vehículo</string>
+
+    <string name="copy_diprove_suggestion_security_vehicle_description">
+        Para reducir el riesgo de robo de su vehículo, estacione en un lugar seguro, asegurando puertas y ventanas con llave y sin dejar la llave de contacto puesta. Siempre que sea posible, elija una zona bien iluminada y visible o, preferiblemente, un parqueo particular.
+        \n\nAdemás, considere instalar sistemas de seguridad adicionales como rastreo GPS, traba volantes, corta corriente o alarmas.
+        \n\nEn caso de robo o intento de hurto, informe de inmediato a DIPROVE y a las autoridades policiales para una pronta respuesta.
+    </string>
+
+    <string name="copy_diprove_suggestion_buy_vehicle_title">Evite problemas: verifique su vehículo antes de comprar</string>
+
+    <string name="copy_diprove_suggestion_buy_vehicle_description">
+        Antes de comprar un vehículo, verifique que la documentación esté en regla, compare los números de chasis y motor con los registrados en los papeles, desconfíe de precios demasiado bajos y evite compras sin contrato notariado.
+        \n\nAdemás, para garantizar que el vehículo no sea robado, remarcado o reimplantado, consulte con el personal de DIPROVE Cochabamba.
+    </string>
+
+</resources>

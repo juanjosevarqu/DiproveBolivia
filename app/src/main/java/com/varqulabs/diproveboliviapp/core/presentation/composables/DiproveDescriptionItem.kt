@@ -21,6 +21,13 @@ fun DiproveDescriptionItem(
     modifier: Modifier = Modifier,
     headingText: String,
     @StringRes bodyText: Int,
+    bodyStyle: TextStyle = TextStyle(
+        textAlign = TextAlign.Justify,
+        hyphens = Hyphens.Auto,
+        fontSize = 15.sp,
+        lineHeight = 26.sp,
+        fontFamily = BricolageGrotesque
+    ),
 ) {
     Column(
         modifier = modifier,
@@ -34,19 +41,13 @@ fun DiproveDescriptionItem(
                 fontFamily = BricolageGrotesque,
                 fontWeight = FontWeight.SemiBold,
             ),
-            maxLines = 2,
+            maxLines = 4,
             overflow = TextOverflow.Ellipsis
         )
 
         Text(
             text = stringResource(bodyText),
-            style = TextStyle(
-                textAlign = TextAlign.Justify,
-                hyphens = Hyphens.Auto,
-                fontSize = 15.sp,
-                lineHeight = 26.sp,
-                fontFamily = BricolageGrotesque,
-            ),
+            style = bodyStyle,
         )
     }
 }
