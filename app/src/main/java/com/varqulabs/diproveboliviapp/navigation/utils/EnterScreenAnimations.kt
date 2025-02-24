@@ -34,7 +34,7 @@ fun AnimatedContentTransitionScope<NavBackStackEntry>.slideInToLeft() =
 
 fun AnimatedContentTransitionScope<NavBackStackEntry>.enterZoomIn() =
     scaleIn(
-        initialScale = 0.8f, // Comenzamos con un tamaño más pequeño
+        initialScale = 0.8f,
         animationSpec = tween(500)
     ) + fadeIn(
         animationSpec = tween(500)
@@ -42,7 +42,7 @@ fun AnimatedContentTransitionScope<NavBackStackEntry>.enterZoomIn() =
 
 fun AnimatedContentTransitionScope<NavBackStackEntry>.exitZoomOut() =
     scaleOut(
-        targetScale = 1.2f, // Se agranda un poco antes de desaparecer
+        targetScale = 1.2f,
         animationSpec = tween(500)
     ) + fadeOut(
         animationSpec = tween(500)
@@ -50,7 +50,7 @@ fun AnimatedContentTransitionScope<NavBackStackEntry>.exitZoomOut() =
 
 fun AnimatedContentTransitionScope<NavBackStackEntry>.popEnterZoomIn() =
     scaleIn(
-        initialScale = 1.2f, // Aparece un poco más grande y se ajusta
+        initialScale = 1.2f,
         animationSpec = tween(500)
     ) + fadeIn(
         animationSpec = tween(500)
@@ -58,7 +58,7 @@ fun AnimatedContentTransitionScope<NavBackStackEntry>.popEnterZoomIn() =
 
 fun AnimatedContentTransitionScope<NavBackStackEntry>.popExitZoomOut() =
     scaleOut(
-        targetScale = 0.8f, // Se reduce antes de salir
+        targetScale = 0.8f,
         animationSpec = tween(500)
     ) + fadeOut(
         animationSpec = tween(500)
