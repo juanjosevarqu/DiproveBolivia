@@ -18,7 +18,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -51,6 +50,7 @@ import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.launchExternalIntent
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
 import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
+import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesqueSemiCondensed
 
 @Composable
 fun RegionalLocationsScreen(
@@ -88,24 +88,13 @@ fun RegionalLocationsScreen(
 
         item {
             Text(
-                text = "Recomendación",
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    fontFamily = BricolageGrotesque,
-                    fontWeight = FontWeight.SemiBold,
-                ),
-            )
-        }
-
-        item {
-            Text(
                 text = stringResource(R.string.copy_diprove_regional_suggestion),
                 style = TextStyle(
                     textAlign = TextAlign.Justify,
                     hyphens = Hyphens.Auto,
-                    fontSize = 14.sp,
-                    lineHeight = 22.sp,
-                    fontFamily = BricolageGrotesque,
+                    fontSize = 15.sp,
+                    lineHeight = 24.sp,
+                    fontFamily = BricolageGrotesqueSemiCondensed,
                     fontWeight = FontWeight.Medium
                 ),
             )

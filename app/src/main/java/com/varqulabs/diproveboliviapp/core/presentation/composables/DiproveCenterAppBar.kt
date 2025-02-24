@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -45,6 +46,7 @@ fun DiproveCenterAppBar(
             title = {
                 if (title.isNotBlank()) {
                     Text(
+                        modifier = Modifier.fillMaxWidth(),
                         text = title,
                         maxLines = 3,
                         overflow = TextOverflow.Ellipsis,
@@ -54,6 +56,7 @@ fun DiproveCenterAppBar(
                             fontWeight = FontWeight.ExtraBold,
                             color = Color(0xFFFEFEFE),
                             textAlign = TextAlign.Center,
+                            hyphens = Hyphens.Auto
                         ),
                     )
                 }

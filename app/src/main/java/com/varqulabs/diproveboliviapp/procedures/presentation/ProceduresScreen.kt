@@ -16,8 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -45,13 +43,10 @@ import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER
 import com.varqulabs.diproveboliviapp.core.domain.BANK_NUMBER_COPY
 import com.varqulabs.diproveboliviapp.core.presentation.composables.ChipItem
 import com.varqulabs.diproveboliviapp.core.presentation.composables.CopyIconButton
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
-import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.utils.context.copyToClipboard
 import com.varqulabs.diproveboliviapp.core.presentation.utils.modifier.clickableSingle
 import com.varqulabs.diproveboliviapp.ui.theme.BricolageGrotesque
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProceduresScreen(
 
@@ -73,76 +68,61 @@ fun ProceduresScreen(
         }
     }
 
-    /*Scaffold(
-        topBar = {
-            DiproveCenterAppBar(
-                title = stringResource(R.string.copy_services_offered),
-            )
-        },
-        containerColor = Color(0xFFFEFEFE)
-    ) { paddingValues ->
-        DiprovePoliceBackgroundContainer(
-            modifierImage = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {*/
-            LazyColumn(
-                state = lazyListState,
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                contentPadding = PaddingValues(
-                    top = 16.dp,
-                    bottom = 80.dp,
-                    start = 16.dp,
-                    end = 16.dp
-                )
-            ) {
+    LazyColumn(
+        state = lazyListState,
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(
+            top = 16.dp,
+            bottom = 80.dp,
+            start = 16.dp,
+            end = 16.dp
+        )
+    ) {
 
-                item {
-                    BankNumberAndCopy(
-                        modifier = Modifier.fillMaxWidth()
+        item {
+            BankNumberAndCopy(
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        item {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(0.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                procedures.forEach { procedure ->
+                    ChipItem(
+                        text = stringResource(procedure.name),
+                        onClick = { currentSelected = procedure },
+                        selected = procedure == currentSelected
                     )
                 }
+            }
+        }
 
+        if (currentSelected != null) {
+            currentSelected?.let { procedure ->
                 item {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.spacedBy(0.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        procedures.forEach { procedure ->
-                            ChipItem(
-                                text = stringResource(procedure.name),
-                                onClick = { currentSelected = procedure },
-                                selected = procedure == currentSelected
-                            )
-                        }
-                    }
-                }
-
-                if (currentSelected != null) {
-                    currentSelected?.let { procedure ->
-                        item {
-                            Image(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(RoundedCornerShape(12.dp))
-                                    .border(
-                                        width = 1.dp,
-                                        color = Color(0xFFD0A82D),
-                                        shape = RoundedCornerShape(12.dp)
-                                    ),
-                                contentScale = ContentScale.FillWidth,
-                                painter = painterResource(id = procedure.image),
-                                contentDescription = "Imagen del procedimiento"
-                            )
-                        }
-                    }
+                    Image(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .border(
+                                width = 1.dp,
+                                color = Color(0xFFD0A82D),
+                                shape = RoundedCornerShape(12.dp)
+                            ),
+                        contentScale = ContentScale.FillWidth,
+                        painter = painterResource(id = procedure.image),
+                        contentDescription = "Imagen del procedimiento"
+                    )
                 }
             }
-        /*}
-    }*/
+        }
+    }
 }
 
 @Composable

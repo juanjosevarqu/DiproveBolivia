@@ -3,6 +3,7 @@ package com.varqulabs.diproveboliviapp.core.presentation.composables
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,6 +22,11 @@ fun DiproveDescriptionItem(
     modifier: Modifier = Modifier,
     headingText: String,
     @StringRes bodyText: Int,
+    headingStyle: TextStyle = TextStyle(
+        fontSize = 20.sp,
+        fontFamily = BricolageGrotesque,
+        fontWeight = FontWeight.SemiBold,
+    ),
     bodyStyle: TextStyle = TextStyle(
         textAlign = TextAlign.Justify,
         hyphens = Hyphens.Auto,
@@ -35,12 +41,9 @@ fun DiproveDescriptionItem(
     ) {
 
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = headingText,
-            style = TextStyle(
-                fontSize = 20.sp,
-                fontFamily = BricolageGrotesque,
-                fontWeight = FontWeight.SemiBold,
-            ),
+            style = headingStyle,
             maxLines = 4,
             overflow = TextOverflow.Ellipsis
         )

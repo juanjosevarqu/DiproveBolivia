@@ -10,19 +10,16 @@
     <string name="copy_records_division">División de Archivos</string>
 
     <string name="copy_platform_division_functions">
-        Es la unidad encargada de recepcionar las denuncias de robo de vehículos y otros delitos relacionados con la seguridad vehicular.
-        \n\n• Una vez registrada la denuncia, esta división se encarga de canalizar la información hacia el Grupo de Investigaciones, proporcionando los datos iniciales necesarios para el inicio de las pesquisas.
-        \n• Además, coordina con otras unidades para garantizar una respuesta rápida y efectiva.
+        Es la unidad encargada de recepcionar las denuncias de robo de vehículos y otros delitos relacionados con la seguridad vehicular. Una vez registrada la denuncia, esta división se encarga de canalizar la información hacia la división de Investigaciones.
     </string>
 
     <string name="copy_investigator_division_functions">
-        Integrada por personal capacitado en técnicas de investigación criminal, esta unidad tiene la función de realizar operativos, recopilar pruebas, efectuar seguimientos y coordinar con otras instancias policiales y judiciales para esclarecer casos de robo, alteración o tráfico ilícito de vehículos.
-        \n\n• Su labor incluye entrevistas, recolección de información y análisis de patrones delictivos para lograr la recuperación de vehículos sustraídos y la aprehensión de los responsables.
+        Integrada por personal altamente capacitado en técnicas de investigación criminal, esta unidad tiene la función de realizar operativos, recopilar pruebas, efectuar seguimientos y coordinar con otras instancias policiales y judiciales para esclarecer casos de robo, alteración o tráfico ilícito de vehículos.
     </string>
 
     <string name="copy_vehicle_identification_division_functions">
         Se encarga de la verificación, control y registro de los distintos trámites relacionados con la identificación de vehículos, tales como:
-        \n\n•	Cambio de motor, estructura, etc.
+        \n\n• Cambio de motor, chasis o estructura, etc.
         \n• Cambio de color y modificación de datos del vehículo.
         \n• Inscripción y reinscripción de vehículos.
         \n• Verificación de antecedentes de vehículos en base a registros policiales y judiciales.
@@ -30,18 +27,11 @@
     </string>
 
     <string name="copy_records_division_functions">
-        Es la unidad donde se almacenan todos los expedientes y antecedentes de casos investigados por DIPROVE.
-        \n\nEn caso de ser necesario, los archivos pueden ser reabiertos para continuar o reiniciar una investigación, ya sea por la aparición de nuevas pruebas o por solicitud de autoridades competentes.
-        \n\nAdemás, brinda apoyo documental a las demás divisiones para consultas e informes requeridos en los procesos judiciales y administrativos.
+        Es la unidad donde se almacenan todos los expedientes y antecedentes de casos investigados por DIPROVE. En caso de ser necesario, los archivos pueden ser reabiertos para continuar o reiniciar una investigación, ya sea por la aparición de nuevas pruebas o por solicitud de autoridades competentes.
     </string>
 
     <string name="copy_analysis_and_intelligence_division_functions">
-        Especializada en la recopilación y análisis de información para la identificación de patrones delictivos, modus operandi y redes criminales dedicadas al robo de vehículos.
-        \n\nSu trabajo incluye:
-        \n• Seguimiento y monitoreo de casos relevantes.
-        \n• Desarticulación de organizaciones criminales vinculadas al tráfico de vehículos y autopartes.
-        \n• Coordinación con unidades de inteligencia nacionales e internacionales para combatir el crimen organizado.
-        \n\nEsta división desempeña un papel clave en la prevención y reducción de delitos relacionados con el parque automotor.
+        Especializada en el análisis de información para identificar patrones delictivos, modus operandi y redes criminales dedicadas al robo de vehículos, esta división monitorea casos, desarticula organizaciones vinculadas al tráfico de vehículos y autopartes, y coordina con unidades de inteligencia nacionales e internacionales, desempeñando un papel clave en la prevención y reducción de estos delitos.
     </string>
 
 </resources>
