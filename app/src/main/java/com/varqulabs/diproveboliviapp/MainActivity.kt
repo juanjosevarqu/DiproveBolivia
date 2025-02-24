@@ -14,12 +14,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiproveCenterAppBar
 import com.varqulabs.diproveboliviapp.core.presentation.composables.DiprovePoliceBackgroundContainer
 import com.varqulabs.diproveboliviapp.core.presentation.composables.SocialFloatingActionButtons
 import com.varqulabs.diproveboliviapp.navigation.AppNavGraph
+import com.varqulabs.diproveboliviapp.navigation.Routes
 import com.varqulabs.diproveboliviapp.navigation.utils.getRoute
 import com.varqulabs.diproveboliviapp.ui.theme.DiproveBoliviappTheme
 import kotlinx.coroutines.CoroutineScope
@@ -52,7 +54,11 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Scaffold(
-                    floatingActionButton = { SocialFloatingActionButtons() },
+                    floatingActionButton = if (currentDestination?.hasRoute<Routes.Welcome>() == true) {
+                        {  }
+                    } else {
+                        { SocialFloatingActionButtons() }
+                    },
                     topBar = { DiproveCenterAppBar(title = stringResource(currentTitleRes)) },
                 ) { paddingValues ->
                     DiprovePoliceBackgroundContainer(

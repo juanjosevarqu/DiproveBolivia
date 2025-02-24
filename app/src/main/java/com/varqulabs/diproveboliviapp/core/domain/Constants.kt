@@ -25,9 +25,9 @@ val imagesHorizontalCarruselDiprove = listOf(
     R.drawable.diprove_carrusel_horizontal_5,
     R.drawable.diprove_carrusel_horizontal_6,
     R.drawable.diprove_carrusel_horizontal_7,
-    R.drawable.diprove_carrusel_horizontal_8,
+    R.drawable.diprove_analysis_intelligence_division,
     R.drawable.diprove_carrusel_horizontal_9,
-    R.drawable.diprove_carrusel_horizontal_10,
+    R.drawable.diprove_vehicle_division,
     R.drawable.diprove_carrusel_horizontal_11,
 )
 
