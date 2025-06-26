@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -23,14 +24,13 @@ fun AppBottomNavigation(navController: NavController) {
 
     val bottomScreens = remember {
         listOf(
-            BottomScreens.Home,
-            BottomScreens.Locations,
-            BottomScreens.Procedures,
-            BottomScreens.AboutInstitution,
+            HomeScreens.Locations,
+            HomeScreens.Procedures,
+            HomeScreens.DiproveDivisions,
         )
     }
 
-    NavigationBar(containerColor = MaterialTheme.colorScheme.background) {
+    NavigationBar(containerColor = Color(0xB7E8F5E9)) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
 
@@ -60,14 +60,17 @@ fun AppBottomNavigation(navController: NavController) {
                         text = screen.name,
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                        color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
+                        color = if (isSelected) Color(0xFF266748) else Color.Gray,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.primary,
-                    selectedTextColor = MaterialTheme.colorScheme.primary,
-                    unselectedIconColor = MaterialTheme.colorScheme.onBackground,
-                    unselectedTextColor = MaterialTheme.colorScheme.onBackground,
+                    selectedIconColor = Color(0xFF266346),
+                    selectedTextColor = Color(0xFF266346),
+                    unselectedIconColor = Color.DarkGray,
+                    unselectedTextColor = Color.DarkGray,
+                    indicatorColor = Color(0x27266346)
                 )
             )
         }

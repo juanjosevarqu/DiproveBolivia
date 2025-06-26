@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     id("kotlin-parcelize")
+    alias(libs.plugins.googleDevtoolsKsp)
 }
 
 android {
@@ -38,6 +39,10 @@ android {
     }
 }
 
+ksp {
+    arg("KOIN_CONFIG_CHECK", "true")
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -53,8 +58,19 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
 
+    // Splash Screen
+    implementation(libs.androidx.splashscreen)
+
     // Serialization
     implementation(libs.kotlinx.serialization.json)
+
+    // KSP
+    ksp(libs.koin.ksp.compiler)
+
+    // Koin
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.android)
+    implementation(libs.koin.annotations)
 
     // Bundles
     implementation(libs.bundles.compose.libraries)
