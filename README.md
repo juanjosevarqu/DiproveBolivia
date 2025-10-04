@@ -1,9 +1,14 @@
-DIPROVE Division - Cochabamba
-![Screenshot 2025-06-26 at 18 29 03](https://github.com/user-attachments/assets/6b5b5c7a-001f-4bcf-a652-881f7f7ba01d)
+# 📱 DIPROVE Division - Cochabamba
+Diprove Cochabamba is an app developed for the Bolivian Police to help users find offices, procedures, and requirements.
 
+# Preview
 
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/ae043ca6-813a-4672-8b21-7435968ce1cd" width="250" controls></video>
-  <video src="https://github.com/user-attachments/assets/7c308d52-519a-4d91-ba41-6fdb7471032d" width="250" controls></video>
-  <video src="https://github.com/user-attachments/assets/202b6777-7acc-4b50-9266-714e983c298b" width="250" controls></video>
+<p>
+  <img src="https://github.com/user-attachments/assets/522f68ae-2aa1-4f5d-82a0-1fe6465186b8"/>
+  <img src="https://github.com/user-attachments/assets/ca291149-02ee-4284-a0c7-2c2c4538ee15"/>
+  <img src="https://github.com/user-attachments/assets/af5a81df-fe6d-4cc4-bf4a-a51ee42cf514"/>
 </p>
+
+# Screenshots
+
+![Screenshot 2025-06-26 at 18 29 03](https://github.com/user-attachments/assets/6b5b5c7a-001f-4bcf-a652-881f7f7ba01d)
